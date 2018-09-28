@@ -1,0 +1,11 @@
+@if ($id=='konsultasi-zakat')
+    @include('pages.layanan.konsultasi')
+@elseif ($id=='konfirmasi-zakat')
+    @include('pages.layanan.konfirmasi')
+@elseif ($id=='jemput-zakat')
+    @include('pages.layanan.jemput')
+@elseif ($id=='rekening-zakat')
+    @include('pages.layanan.rekening')
+@elseif ($id=='kalkulator-zakat')
+    @include('pages.layanan.kalkulator')
+@endif
