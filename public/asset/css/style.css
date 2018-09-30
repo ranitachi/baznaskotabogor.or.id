@@ -569,7 +569,7 @@ img{
 
 /* Specific Content  ------------------------------------------------*/
 .central_content{
-	opacity: 0;
+	opacity: 1;
 }
 .central_content h3{	
 	font-size: 15px;

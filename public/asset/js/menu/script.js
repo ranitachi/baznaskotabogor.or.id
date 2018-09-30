@@ -40,7 +40,7 @@ var adjustMenu = function() {
 		 $(".toggleMenu").click(function(){
         if ($(this).hasClass('active')){
             $(".central_content,.main").css({
-            	opacity: 0.5
+            	opacity: 1
           });
         }else{
           $(".central_content,.main").css({
