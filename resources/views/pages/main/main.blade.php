@@ -122,7 +122,7 @@
                     {{-- <h2 class="text-center" style="padding-left: 13px;">TENTANG BAZNAS KOTA BOGOR</h2> --}}
                     <div class="row">
                         <div class="col-md-1">&nbsp;</div>
-                        <div class="col-md-10 col-sm-10  text-left" style="opacity:1.0;position:relative;z-index:100000;text-align:center;font-size:20px !important;">
+                        <div class="col-md-10 col-sm-10  text-left" style="opacity:1.0;position:relative;z-index:100000;text-align:left;font-size:20px !important;">
                         @php
                             $visimisi=\App\Models\ProfileCCIT::where('category','like','%visi%')->where('flag',1)->first();    
                             echo $visimisi->desc;
