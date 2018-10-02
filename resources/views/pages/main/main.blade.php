@@ -51,7 +51,7 @@
                                             </ul> 
                                             <h3>{{$item->title}}</h3>
                                         <p>{{substr(strip_tags($item->desc),0,300)}}[..]</p>
-                                            <a class="button_url" href="{{url('publikasi/'.str_slug($item->title))}}"> Selengkapnya</a>
+                                            <a class="button_url" href="{{url('publikasi/'.str_slug($item->cat_berita->nama_kategori).'/'.str_slug($item->title))}}"> Selengkapnya</a>
                                         </li>
                                         @endforeach
                                     <!--item news-->
