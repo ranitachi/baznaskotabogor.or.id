@@ -8,4 +8,6 @@
     @include('pages.layanan.rekening')
 @elseif ($id=='kalkulator-zakat')
     @include('pages.layanan.kalkulator')
+@elseif ($id=='donasi-zakat')
+    @include('pages.layanan.donasi-zakat')
 @endif

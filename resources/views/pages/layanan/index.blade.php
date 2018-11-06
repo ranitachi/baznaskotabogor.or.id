@@ -414,4 +414,31 @@
 
        	}
     </script>
+<style>
+#halaman-content {
+}
+
+#halaman-content h1, #halaman-content h2, #halaman-content h3, #halaman-content h4, #halaman-content h5, #halaman-content h6 {
+	font-family: georgia;
+	font-weight: normal;
+}
+
+#halaman-content p {
+	font-size: 1.1em;
+}
+
+#halaman-content a {
+	font-weight: normal;
+}
+
+#halaman-content a:hover {
+	text-decoration: none;
+}
+
+#halaman-content img {
+	max-width: 80px;
+	height: auto;
+	padding: 2px;
+}
+</style>
 @endsection

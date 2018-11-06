@@ -32,6 +32,7 @@
             </li>
             <li><a href="#">Layanan <i class="fa fa-angle-double-down"></i></a>
                 <ul>
+                    <li><a href="{{url('layanan/donasi-zakat')}}"><i class="fa fa-angle-right"></i>Donasi Zakat Online</a></li>
                     <li><a href="{{url('layanan/konsultasi-zakat')}}"><i class="fa fa-angle-right"></i>Konsultasi Zakat</a></li>
                     <li><a href="{{url('layanan/konfirmasi-zakat')}}"><i class="fa fa-angle-right"></i>Konfirmasi Zakat</a></li> 
                     <li><a href="{{url('layanan/jemput-zakat')}}"><i class="fa fa-angle-right"></i>Jemput Zakat</a></li> 
