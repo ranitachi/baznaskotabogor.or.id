@@ -37,7 +37,7 @@ Route::get('program-baznas/{slug}', 'ProgramFrontController@detail')->name('prog
 
 Route::get('/beranda', 'BerandaFrontController@index')->name('front.beranda');
 
-Route::get('/kontak', 'BerandaFrontController@kontak')->name('front.kontak');
+Route::get('kontak-kami', 'ProfileFrontController@kontak')->name('front.kontak');
 
 Route::get('/profil', 'ProfileFrontController@index')->name('front.index');
 Route::get('/profil/{jenis}', 'ProfileFrontController@detailprofil')->name('profil.detail');
@@ -176,6 +176,7 @@ Route::resource('visi-misi','ProfileCCITController');
 Route::resource('tentang','ProfileCCITController');
 Route::get('profil-data/{category}', 'ProfileCCITController@data')->name('profil.data');
 Route::get('profil-form/{id}/{category}', 'ProfileCCITController@form')->name('profil.form');
+
 // ------------ BACKEND ROUTES -------------------
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {

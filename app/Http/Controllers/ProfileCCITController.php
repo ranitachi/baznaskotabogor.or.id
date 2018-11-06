@@ -20,7 +20,10 @@ class ProfileCCITController extends Controller
       $data['category']=$cat;
       return view('backend.pages.profil.'.$cat,$data);
     }
-
+    public function kontak()
+    {
+      
+    }
     public function data($category)
     {
       $cat=$category;

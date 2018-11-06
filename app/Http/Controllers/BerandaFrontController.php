@@ -61,7 +61,7 @@ class BerandaFrontController extends Controller
 
     public function kontak()
     {
-        $getinstagram = InstagramImage::getImage();
+        // $getinstagram = InstagramImage::getImage();
         $kontak = Contact::all();
         $profil = ProfileCCIT::all();
       

@@ -25,6 +25,16 @@ class ProfileFrontController extends Controller
         ->with('profil',$profil)
         ->with('getinstagram', $getinstagram);
     }
+    public function kontak()
+    {
+      
+      $kontak = Contact::all();
+      $profil = ProfileCCIT::all();
+       
+      return view('pages.kontak.index')
+        ->with('kontak',$kontak)
+        ->with('profil',$profil);
+    }
 
     public function detailprofil($jenis)
     {
