@@ -67,6 +67,11 @@
                                 <td style="width:10px;">:</td>
                                 <td>{{$zakatonline ? number_format($zakatonline->jlh_donasi,0,',','.'): ''}}</td>
                             </tr>
+                            <tr>
+                                <td style="width: 150px;">Status Donasi</td>
+                                <td style="width:10px;">:</td>
+                                <td>{{$zakatonline ? ($zakatonline->status_donasi=='01' ? 'Pending/Menunggu Pembayaran' : ($zakatonline->status_donasi=='02'? 'Berhasil':'Gagal')): ''}}</td>
+                            </tr>
                         </table>    
                         <br>
                         <br>

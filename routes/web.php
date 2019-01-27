@@ -64,6 +64,7 @@ Route::post('donasi-zakat','LayananFrontController@donasi_zakat');
 // Route::get('returndonasi','LayananFrontController@returndonasi');
 Route::get('terima-kasih','LayananFrontController@terima_kasih');
 Route::get('konfirmasi-donasi','LayananFrontController@konfirmasi');
+Route::get('getMail','LayananFrontController@getMail');
 
 Route::get('/event/list', 'EventFrontController@thelist')->name('front.event');
 Route::get('/event/detail/{id}', 'EventFrontController@detail')->name('front.event-detail');
