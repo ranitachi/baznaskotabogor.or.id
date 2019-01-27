@@ -15,6 +15,7 @@ use App\Models\Testimony;
 use App\Models\Konsultasi;
 use App\Models\Konfirmasi;
 use App\Models\JemputZakat;
+use App\Models\ZakatOnline;
 // use App\Services\InstagramImage;
 use File;
 use Storage;
@@ -182,5 +183,146 @@ class LayananFrontController extends Controller
             // File::delete('images/'.$file);
         }
         Storage::delete('images/'.$file);
+    }
+
+    public function donasi_zakat(Request $req)
+    {
+        // return $request->all();
+        // $req=$request->all();
+        $merchantOrderId=$iddonasi=$req->id_donasi;
+        $productDetails=$req->jenis_donasi;
+        $email=$req->email;
+        $phoneNumber=$req->hp;
+        $additionalParam=$req->nama_lengkap;
+        $merchantCode = 'D4505'; // from duitku
+        $merchantKey = 'e2114de17cebc0fce3ddb1b46b64dbd8'; // from duitku
+        $paymentAmount = str_replace(',','',$req->jlh_donasi);
+        $merchantUserInfo = $req->nama_lengkap; // optional
+        $paymentMethod = $req->PaymentId;
+        $callbackUrl = 'http://payment.baznaskotabogor.or.id/callback.php'; // url for callback
+        $returnUrl = 'http://payment.baznaskotabogor.or.id/return.php'; // url for redirect
+
+        if(strpos($paymentMethod,'Transfer')===false)
+        {
+            $signature = md5($merchantCode . $merchantOrderId . $paymentAmount . $merchantKey);
+            $item1 = array(
+                'name' => $req->jenis_donasi,
+                'price' => $paymentAmount,
+                'quantity' => 1
+            );
+
+            $itemDetails = array(
+                $item1
+            );
+
+            $params = array(
+                'merchantCode' => $merchantCode,
+                'paymentAmount' => $paymentAmount,
+                'paymentMethod' => $paymentMethod,
+                'merchantOrderId' => $merchantOrderId,
+                'productDetails' => $productDetails,
+                'additionalParam' => $additionalParam,
+                'merchantUserInfo' => $merchantUserInfo,
+                'email' => $email,
+                'phoneNumber' => $phoneNumber,
+                'itemDetails' => $itemDetails,
+                'callbackUrl' => $callbackUrl,
+                'returnUrl' => $returnUrl,
+                'signature' => $signature
+            );
+
+            $params_string = json_encode($params);
+            $url = 'http://sandbox.duitku.com/webapi/api/merchant/inquiry'; // Sandbox
+            // $url = 'https://passport.duitku.com/webapi/api/merchant/inquiry'; // Production
+            $ch = curl_init();
+
+            curl_setopt($ch, CURLOPT_URL, $url); 
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $params_string);                                                                  
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
+                'Content-Type: application/json',                                                                                
+                'Content-Length: ' . strlen($params_string))                                                                       
+            );   
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+
+            //execute post
+            $request = curl_exec($ch);
+            $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+            if($httpCode == 200)
+            {
+                $donasi=new ZakatOnline;
+                $donasi->id_donasi=$req->id_donasi;
+                $donasi->nama_lengkap=$req->nama_lengkap;
+                $donasi->email=$req->email;
+                $donasi->hp=$req->hp;
+                $donasi->jenis_donasi=$req->jenis_donasi;
+                $donasi->jlh_donasi=$paymentAmount;
+                $donasi->metode_payment=$req->PaymentId;
+                $donasi->status_donasi='0';
+                $donasi->tanggal_donasi=date('Y-m-d H:i:s');
+                $donasi->save();
+
+                $result = json_decode($request, true);
+                // header('location: '. $result['paymentUrl']);
+                return redirect()->to($result['paymentUrl'])->send();
+                // echo "paymentUrl :". $result['paymentUrl'] . "<br />";
+                // echo "merchantCode :". $result['merchantCode'] . "<br />";
+                // echo "reference :". $result['reference'] . "<br />";
+                echo '<pre>';
+                print_r($result);
+                echo '</pre>';
+            }
+            else
+            {
+
+                echo $httpCode;
+            }
+        }
+    }
+    public function terima_kasih(Request $request)
+    {
+        // return $request->all();
+        $kontak = Contact::all();
+        $profil = ProfileCCIT::all();
+        $testi = Testimony::orderByRaw('RAND()')->get();
+        $bank = Bank::all();
+        $zakatonline = ZakatOnline::where('id_donasi',$request->merchantOrderId)->first();
+
+        $d_bank=array();
+        foreach($bank as $k=>$v)
+        {
+            $d_bank[$v->kategori][]=$v;
+        }
+
+        return view('pages.layanan.terima-kasih')
+                ->with('bank',$d_bank)
+                ->with('kontak',$kontak)
+                ->with('profil',$profil)
+                ->with('zakatonline',$zakatonline)
+                ->with('testi',$testi);
+    }
+    public function konfirmasi(Request $request)
+    {
+        // return $request->all();
+        $kontak = Contact::all();
+        $profil = ProfileCCIT::all();
+        $testi = Testimony::orderByRaw('RAND()')->get();
+        $bank = Bank::all();
+        $zakatonline = ZakatOnline::where('id_donasi',$request->merchantOrderId)->first();
+
+        $d_bank=array();
+        foreach($bank as $k=>$v)
+        {
+            $d_bank[$v->kategori][]=$v;
+        }
+
+        return view('pages.layanan.konfirmasi-donasi')
+                ->with('bank',$d_bank)
+                ->with('kontak',$kontak)
+                ->with('zakatonline',$zakatonline)
+                ->with('profil',$profil)
+                ->with('testi',$testi);
     }
 }

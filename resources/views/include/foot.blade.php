@@ -9,8 +9,8 @@
 <div class="container">
                 <div class="row">
 
-                    <div class="col-md-2 col-sm-2">
-                        <img src="{{asset('images/logo/logo_2.png')}}">
+                    <div class="col-md-2 col-sm-3 text-center" style="padding-top:15px">
+                        <img src="{{asset('images/logo/logo_2.png')}}" style="margin:0 auto !important;">
                     </div>
 
                     <div class="col-md-1 col-sm-1">&nbsp;</div>

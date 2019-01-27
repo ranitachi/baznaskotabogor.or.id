@@ -59,6 +59,11 @@ Route::post('/layanan', 'LayananFrontController@find')->name('front.findlayanan'
 Route::post('layanan/{id}','LayananFrontController@simpan');
 Route::post('upload-konfirmasi','LayananFrontController@upload_konfirmasi');
 Route::get('hapus-foto-konfirmasi/{file}','LayananFrontController@hapus_foto_konfirmasi');
+Route::post('donasi-zakat','LayananFrontController@donasi_zakat');
+// Route::get('callback','LayananFrontController@callback');
+// Route::get('returndonasi','LayananFrontController@returndonasi');
+Route::get('terima-kasih','LayananFrontController@terima_kasih');
+Route::get('konfirmasi-donasi','LayananFrontController@konfirmasi');
 
 Route::get('/event/list', 'EventFrontController@thelist')->name('front.event');
 Route::get('/event/detail/{id}', 'EventFrontController@detail')->name('front.event-detail');

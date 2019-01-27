@@ -138,6 +138,7 @@
     <script src="{{asset('asset/js/dropzone.min.js')}}"></script>
     <script>
         $('#spinner').hide();
+        
         setTimeout(function(){
             $('.alert-success').fadeOut();
         },5000);
@@ -321,10 +322,42 @@
                 }
             }
         });
+        $('#btn-donasi').on('click',function(){
+            var jenis_donasi=$('#jenis_donasi');
+            var keterangan=$('#keterangan');
+            var jlh_donasi=$('#jlh_donasi');
+            var sapaan=$('#sapaan');
+            var nama_lengkap=$('#nama_lengkap');
+            var email=$('#email');
+            var hp=$('#hp');
+            var PaymentId=$('input.PaymentId:checked').length;
+
+            if(jenis_donasi.val()=='')
+                alert("Silahkan Pilih Jenis Donasi");
+            else if(jlh_donasi.val()=='' || jlh_donasi.val()=='0')
+                alert('Silahkan Masukan Jumlah Donasi');
+            else if(nama_lengkap.val()=='')
+                alert('Silahkan Masukan Nama');
+            else if(hp.val()=='')
+                alert('Silahkan Masukan Nomor Handphone');
+            else if(hp.val()=='')
+                alert('Silahkan Masukan Nomor Handphone');
+            else if(PaymentId==0)
+                alert('Silahkan Pilih Metode Donasi');
+            else
+            {
+                $('#form-donasi').submit();
+            }
+            
+
+        });
     </script>
     <script src="{{asset('front/js/autoNumeric.js')}}"></script>
     <script type="text/javascript">
-    
+    $('#jlh_donasi').keyup(function(){
+        $(this).autoNumeric('init',{mDec:0});
+    });
+    // $('input[type=text]').autoNumeric('init',{mDec:0});
     Dropzone.autoDiscover = false;
     var dt = new Date();
     var time = String(dt.getDate())+String(dt.getMonth())+String(dt.getFullYear())+'-';
