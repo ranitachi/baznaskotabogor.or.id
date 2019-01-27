@@ -115,10 +115,10 @@
 										<div class="panel-body">
 
 											<ul class="nav nav-tabs">
-												<li class="active">
+												{{-- <li class="active">
 													<a data-toggle="tab" href="#banktransfer" style="font-size:10px;">Transfer Bank</a>
-												</li>
-												<li class="">
+												</li> --}}
+												<li class="active">
 													<a data-toggle="tab" href="#virtual" style="font-size:10px;">Virtual Account</a>
 												</li>
 												<li>
@@ -127,7 +127,7 @@
 											</ul>
 
 											<div class="tab-content">
-												<div id="banktransfer" class="tab-pane fade in active">
+												{{-- <div id="banktransfer" class="tab-pane fade in active">
 													@php
 														$bank=\App\Models\Bank::where('kategori','zakat')->get();
 													@endphp
@@ -154,8 +154,8 @@
 															<ul class="parsley-errors-list" id="parsley-id-multiple-PaymentId"></ul>
 														</div>
 													@endforeach
-												</div>
-												<div id="virtual" class="tab-pane fade in">
+												</div> --}}
+												<div id="virtual" class="tab-pane fade in active">
 													
 													<div class="radio radio-metode-donasi">
 														<label>
