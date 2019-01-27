@@ -70,7 +70,7 @@
                             <tr>
                                 <td style="width: 150px;">Status Donasi</td>
                                 <td style="width:10px;">:</td>
-                                <td>{{$zakatonline ? ($zakatonline->status_donasi=='01' ? 'Pending/Menunggu Pembayaran' : ($zakatonline->status_donasi=='02'? 'Berhasil':'Gagal')): ''}}</td>
+                                <td>{{$zakatonline ? ($zakatonline->status_donasi=='01' ? 'Pending/Menunggu Pembayaran' : ($zakatonline->status_donasi=='00'? 'Berhasil':'Gagal')): ''}}</td>
                             </tr>
                         </table>    
                         <br>
