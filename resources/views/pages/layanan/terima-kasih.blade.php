@@ -65,6 +65,11 @@
                                     <td style="width:10px;">:</td>
                                     <td>{{$zakatonline ? number_format($zakatonline->jlh_donasi,0,',','.'): ''}}</td>
                                 </tr>
+                                {{-- <tr>
+                                    <td style="width: 150px;">Metode Donasi</td>
+                                    <td style="width:10px;">:</td>
+                                    <td>{{$zakatonline ? ($zakatonline->noVA): ''}}</td>
+                                </tr> --}}
                                 <tr>
                                     <td style="width: 150px;">Kode Virtual Account</td>
                                     <td style="width:10px;">:</td>

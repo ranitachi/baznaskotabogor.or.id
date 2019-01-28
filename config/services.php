@@ -35,4 +35,5 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
     'leveluser' => [1=>'Administrator',2=>'Pengumpulan',3=>'Pendayagunaan',4=>'SDM',5=>'Keuangan'],
+    'zenziva' => ['userkey'=>'ipo6j7la3q9ya9i3s6k7','passkey'=>'6h7c33rlid30zjxt5vg4']
 ];

@@ -298,7 +298,7 @@ class LayananFrontController extends Controller
         $testi = Testimony::orderByRaw('RAND()')->get();
         $bank = Bank::all();
         $zakatonline = ZakatOnline::where('id_donasi',$request->merchantOrderId)->first();
-
+        $this->kirimsms($zakatonline->hp,$zakatonlinejlh_donasi);
         $d_bank=array();
         foreach($bank as $k=>$v)
         {
@@ -311,6 +311,31 @@ class LayananFrontController extends Controller
                 ->with('profil',$profil)
                 ->with('zakatonline',$zakatonline)
                 ->with('testi',$testi);
+    }
+
+    public function kirimsms($nohp,$jlh)
+    {
+        $zenziva=Config::get('services.zenziva');
+        $telepon = $nohp;
+        $message = 'Terima Kasih Atas Kepercayaan Anda Menyalurkan Donasi Zakat/Infak/Sedekah Pada BAZNAS Kota Bogor Sebesar Rp.'.number_format($jlh,0,',','.');
+        
+        $url = 'http://baznaskotabogor.zenziva.co.id/api/sendsms/';
+        $curlHandle = curl_init();
+        curl_setopt($curlHandle, CURLOPT_URL, $url);
+        curl_setopt($curlHandle, CURLOPT_HEADER, 0);
+        curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curlHandle, CURLOPT_SSL_VERIFYHOST, 2);
+        curl_setopt($curlHandle, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($curlHandle, CURLOPT_TIMEOUT,30);
+        curl_setopt($curlHandle, CURLOPT_POST, 1);
+        curl_setopt($curlHandle, CURLOPT_POSTFIELDS, array(
+            'userkey' => $zenziva['userkey'],
+            'passkey' => $zenziva['passkey'],
+            'nohp' => $telepon,
+            'pesan' => $message
+        ));
+        $results = json_decode(curl_exec($curlHandle), true);
+        curl_close($curlHandle);
     }
     public function konfirmasi(Request $request)
     {
