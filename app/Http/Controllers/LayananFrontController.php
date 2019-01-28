@@ -298,7 +298,7 @@ class LayananFrontController extends Controller
         $testi = Testimony::orderByRaw('RAND()')->get();
         $bank = Bank::all();
         $zakatonline = ZakatOnline::where('id_donasi',$request->merchantOrderId)->first();
-        $this->kirimsms($zakatonline->hp,$zakatonlinejlh_donasi);
+        $this->kirimsms($zakatonline->hp,$zakatonline->jlh_donasi);
         $d_bank=array();
         foreach($bank as $k=>$v)
         {
