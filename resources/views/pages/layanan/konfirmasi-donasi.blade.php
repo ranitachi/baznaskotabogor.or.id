@@ -68,6 +68,11 @@
                                 <td>{{$zakatonline ? number_format($zakatonline->jlh_donasi,0,',','.'): ''}}</td>
                             </tr>
                             <tr>
+                                <td style="width: 150px;">Kode Virtual Account</td>
+                                <td style="width:10px;">:</td>
+                                <td>{{$zakatonline ? ($zakatonline->noVA): ''}}</td>
+                            </tr>
+                            <tr>
                                 <td style="width: 150px;">Status Donasi</td>
                                 <td style="width:10px;">:</td>
                                 <td>{{$zakatonline ? ($zakatonline->status_donasi=='01' ? 'Pending/Menunggu Pembayaran' : ($zakatonline->status_donasi=='00'? 'Berhasil':'Gagal')): ''}}</td>
@@ -89,7 +94,7 @@
                                         <ol>
                                             <li>Pilih Menu Lain > Transfer</li>
                                             <li>Pilih rekening asal dan pilih rekening tujuan ke rekening BNI</li>
-                                            <li>Masukkan nomor rekening dengan nomor Virtual Account Anda (contoh: 8228002000100253) dan pilih Benar</li>
+                                            <li>Masukkan nomor rekening dengan nomor Virtual Account Anda (contoh: {{$zakatonline ? ($zakatonline->noVA): '8228002000100253'}}) dan pilih Benar</li>
                                             <li>Masukkan jumlah pembayaran sejumlah tagihan Anda dan pilih Benar</li>
                                             <li>Periksa data di layar. Pastikan Nama adalah nama penerima Anda dan Total Tagihan benar. Apabila data sudah benar, pilih Ya</li>
                                         </ol>
@@ -101,7 +106,7 @@
                                     <div id="bayar_2" style="display:none">
                                         <ol>
                                             <li>Pilih Transaksi > Info & Administrasi Transfer > Atur Rekening Tujuan > Tambah Rekening Tujuan dan klik OK</li>
-                                            <li>Pilih Kode Network & Bank : Transfer Andtar Rek. BNI. Masukkan nomor rekening dengan nomor Virtual Account Anda (contoh: 8228002000100253) dan klik Lanjut. Isi data lainnya dan klik Lanjutkan</li>
+                                            <li>Pilih Kode Network & Bank : Transfer Andtar Rek. BNI. Masukkan nomor rekening dengan nomor Virtual Account Anda (contoh: {{$zakatonline ? ($zakatonline->noVA): '8228002000100253'}}) dan klik Lanjut. Isi data lainnya dan klik Lanjutkan</li>
                                             <li>Cek detail konfirmasi. Pastikan Nama adalah nama penerima Anda – DomaiNesia. Masukkan PIN BNI e-Secure Anda lalu klik Proses</li>
                                             <li>Pilih Transasi > Transfer > Transfer Antar Rek BNI</li>
                                             <li>Pilih Rekening Tujuan sebagai rekening yang barusan disimpan. Masukkan jumlah pembayaran sejumlah tagihan Anda. Lalu, klik Lanjutkan</li>
@@ -115,11 +120,11 @@
                                     <div id="bayar_3" style="display:none">
                                         <ol>
                                             <li>Pilih Transfer > Antar Rekening BNI</li>
-                                            <li>Pilih Rekening Tujuan > Input Rekening Baru. Masukkan nomor rekening dengan nomor Virtual Account Anda (contoh: 8228002000100253) dan klik Lanjut, kemudian klik Lanjut lagi.</li>
+                                            <li>Pilih Rekening Tujuan > Input Rekening Baru. Masukkan nomor rekening dengan nomor Virtual Account Anda (contoh: {{$zakatonline ? ($zakatonline->noVA): '8228002000100253'}}) dan klik Lanjut, kemudian klik Lanjut lagi.</li>
                                             <li>Masukkan jumlah pembayaran sejumlah tagihan Anda. Lalu, klik Lanjutkan</li>
                                             <li>Periksa detail konfirmasi. Pastikan Nama Rekening Tujuan adalah nama penerima dan nominal transfer sudah benar. Jika benar, masukkan password transaksi dan klik Lanjut</li>
                                             <li>Melalui Transfer SMS Banking</li>
-                                            <li>Kirim SMS “TRF [SPASI] nomor Virtual Account Anda [SPASI] Nominal Transaksi” tanpa tanda petik (Contoh: TRF 8228002000100253 129000) kirim ke 3346</li>
+                                            <li>Kirim SMS “TRF [SPASI] nomor Virtual Account Anda [SPASI] Nominal Transaksi” tanpa tanda petik (Contoh: TRF {{$zakatonline ? ($zakatonline->noVA): '8228002000100253'}} 129000) kirim ke 3346</li>
                                             <li>Balas SMS yang masuk mengikuti petunjuk    </li>
                                         </ol>
                                     </div>
@@ -134,7 +139,7 @@
                                     <li>Pada Menu utama, pilih Transaksi Lainnya. </li>
                                     <li>Pilih Transfer.</li>
                                     <li>Pilih Antar Bank Online. </li>
-                                    <li>Masukkan nomor 009 8228002000100253 (kode 009 dan kode Virtual account). </li>
+                                    <li>Masukkan nomor 009 {{$zakatonline ? ($zakatonline->noVA): '8228002000100253'}} (kode 009 dan kode Virtual account). </li>
                                     <li>Masukkan jumlah tagihan yang akan Anda bayar secara lengkap. Pembayaran dengan jumlah yang tidak sesuai akan otomatis ditolak. </li>
                                     <li>Pada halaman konfirmasi transfer akan muncul jumlah yang dibayarkan & nomor rekening tujuan. Jika informasinya telah sesuai tekan tombol Benar. </li>
                                 </ol>
@@ -150,7 +155,7 @@
                                     <li>Pilih Ke Rek Bank Lain. </li>
                                     <li>Masukkan kode 009 untuk BNI lalu tekan Benar. </li>
                                     <li>Masukkan jumlah tagihan yang akan Anda bayar secara lengkap. Pembayaran dengan jumlah yang tidak sesuai akan otomatis ditolak. </li>
-                                    <li>Masukkan 8228002000100253 (kode virtual account pembayaran) lalu tekan Benar. </li>
+                                    <li>Masukkan {{$zakatonline ? ($zakatonline->noVA): '8228002000100253'}} (kode virtual account pembayaran) lalu tekan Benar. </li>
                                     <li>Pada halaman konfirmasi transfer akan muncul jumlah yang dibayarkan & nomor rekening tujuan. Jika informasinya telah sesuai tekan Benar. </li>
                                 </ol>
                             </div>
