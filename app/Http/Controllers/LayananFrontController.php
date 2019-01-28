@@ -19,6 +19,7 @@ use App\Models\ZakatOnline;
 // use App\Services\InstagramImage;
 use File;
 use Storage;
+use Mail;
 class LayananFrontController extends Controller
 {
     public function index($id=-1)
@@ -191,7 +192,8 @@ class LayananFrontController extends Controller
         // $req=$request->all();
         $merchantOrderId=$iddonasi=$req->id_donasi;
         $productDetails=$req->jenis_donasi;
-        $email=$req->email;
+        // $email=$req->email;
+        $email='baznaskota.bogor@baznas.or.id';
         $phoneNumber=$req->hp;
         $additionalParam=$req->nama_lengkap;
         $merchantCode = 'D4505'; // from duitku
@@ -329,7 +331,8 @@ class LayananFrontController extends Controller
     public function getMail()
     {
         /* connect to gmail */
-        $hostname = '{imap.gmail.com:993/imap/ssl}INBOX';
+        // $hostname = '{imap.gmail.com:993/imap/ssl}INBOX';
+        $hostname = '{imap.gmail.com:993/imap/ssl/novalidate-cert}INBOX';
         $username = 'baznaskota.bogor@baznas.or.id';
         $password = 'baznasbogor17';
         // $username = 'fachran.nazarullah@gmail.com';
@@ -337,8 +340,8 @@ class LayananFrontController extends Controller
 
         $inbox = imap_open($hostname, $username, $password) or die('Cannot connect: ' . imap_last_error());
 
-        $emails = imap_search($inbox, 'ALL');
-
+        $emails = imap_search($inbox, 'UNSEEN');
+        $mail=array();
         if ($emails) {
             $output = '';
             $mails = array();
@@ -347,22 +350,37 @@ class LayananFrontController extends Controller
 
             foreach ($emails as $email_number) {
                 $header = imap_headerinfo($inbox, $email_number);
-                $message = quoted_printable_decode (imap_fetchbody($inbox, $email_number, 1));
+                $dd['message']=$message = quoted_printable_decode (imap_fetchbody($inbox, $email_number, 1));
 
-                $from = $header->from[0]->mailbox . "@" . $header->from[0]->host;
-                $toaddress = $header->toaddress;
-                if(imap_search($inbox, 'UNSEEN')){
-                    /*Store from and message body to database*/
-                    DB::table('email')->insert(['from'=>$from, 'body'=>$message]);
-                    return view('emails.display');
-                }
-                else{
-                    $data = Email::all();
-                    return view('emails.display',compact('data'));
+                $dd['from']=$from = $header->from[0]->mailbox . "@" . $header->from[0]->host;
+                $dd['toaddress']=$toaddress = $header->toaddress;
+                $mail[]=$dd;
+                // if(imap_search($inbox, 'UNSEEN')){
+                //     /*Store from and message body to database*/
+                //     // DB::table('email')->insert(['from'=>$from, 'body'=>$message]);
+                //     // return view('emails.display');
+                // }
+                // else{
+                //     // $data = Email::all();
+                //     // return view('emails.display',compact('data'));
 
-                }
+                // }
             }
+            
         }
-            imap_close($inbox);
-        }
+        imap_close($inbox);
+        return $mail;
+    }
+    function sendEmail()
+    {
+        $data['email']='baznaskota.bogor@baznas.or.id';
+        $data['nama']='BAZNAS Kota Bogor';
+        $data['pesan']='Test';
+        Mail::send('email.kontak', $data, function ($mail) use ($data)
+        {
+            $mail->from($data['email'], $data['nama']);
+            $mail->to('fachran.nazarullah@gmail.com', 'Fachran Nazarullah');
+            $mail->subject('Kontak Pesan : '.$data['nama']);
+        });
+    }
 }

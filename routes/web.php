@@ -65,6 +65,7 @@ Route::post('donasi-zakat','LayananFrontController@donasi_zakat');
 Route::get('terima-kasih','LayananFrontController@terima_kasih');
 Route::get('konfirmasi-donasi','LayananFrontController@konfirmasi');
 Route::get('getMail','LayananFrontController@getMail');
+Route::get('sendMail','LayananFrontController@sendEmail');
 
 Route::get('/event/list', 'EventFrontController@thelist')->name('front.event');
 Route::get('/event/detail/{id}', 'EventFrontController@detail')->name('front.event-detail');
@@ -188,3 +189,5 @@ Route::get('profil-form/{id}/{category}', 'ProfileCCITController@form')->name('p
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     //  \UniSharp\LaravelFilemanager\Lfm::routes();
  });
+
+ Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');

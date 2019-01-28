@@ -24,6 +24,7 @@ class CreateZakatOnlinesTable extends Migration
             $table->string('metode_payment')->nullable();
             $table->string('status_donasi')->nullable();
             $table->string('reference')->nullable();
+            $table->string('noVA')->nullable();
             $table->datetime('tanggal_donasi')->nullable();
             $table->datetime('tanggal_payment')->nullable();
             $table->timestamps();
