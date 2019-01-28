@@ -188,21 +188,20 @@ class LayananFrontController extends Controller
 
     public function donasi_zakat(Request $req)
     {
-        // return $request->all();
-        // $req=$request->all();
-        $merchantOrderId=$iddonasi=$req->id_donasi;
-        $productDetails=$req->jenis_donasi;
-        // $email=$req->email;
-        $email='baznaskota.bogor@baznas.or.id';
-        $phoneNumber=$req->hp;
-        $additionalParam=$req->nama_lengkap;
         $merchantCode = 'D4505'; // from duitku
         $merchantKey = 'e2114de17cebc0fce3ddb1b46b64dbd8'; // from duitku
         $paymentAmount = str_replace(',','',$req->jlh_donasi);
-        $merchantUserInfo = $req->nama_lengkap; // optional
         $paymentMethod = $req->PaymentId;
+        $merchantOrderId=$iddonasi=$req->id_donasi;
+        $productDetails=$req->jenis_donasi;
+        $email=$req->email;
+        $phoneNumber=$req->hp;
+        $additionalParam= $req->nama_lengkap;
+        $merchantUserInfo = $req->nama_lengkap;
+        $customerVaName = $req->nama_lengkap;
         $callbackUrl = 'http://payment.baznaskotabogor.or.id/callback.php'; // url for callback
         $returnUrl = 'http://payment.baznaskotabogor.or.id/return.php'; // url for redirect
+        $expiryPeriod = '10'; // set the expired time in minutes
 
         if(strpos($paymentMethod,'Transfer')===false)
         {
@@ -217,7 +216,7 @@ class LayananFrontController extends Controller
                 $item1
             );
 
-            $params = array(
+           $params = array(
                 'merchantCode' => $merchantCode,
                 'paymentAmount' => $paymentAmount,
                 'paymentMethod' => $paymentMethod,
@@ -225,26 +224,28 @@ class LayananFrontController extends Controller
                 'productDetails' => $productDetails,
                 'additionalParam' => $additionalParam,
                 'merchantUserInfo' => $merchantUserInfo,
+                'customerVaName' => $customerVaName,
                 'email' => $email,
                 'phoneNumber' => $phoneNumber,
                 'itemDetails' => $itemDetails,
                 'callbackUrl' => $callbackUrl,
                 'returnUrl' => $returnUrl,
-                'signature' => $signature
+                'signature' => $signature,
+                'expiryPeriod' => $expiryPeriod
             );
 
             $params_string = json_encode($params);
-            $url = 'http://sandbox.duitku.com/webapi/api/merchant/inquiry'; // Sandbox
-            // $url = 'https://passport.duitku.com/webapi/api/merchant/inquiry'; // Production
+            $url = 'http://sandbox.duitku.com/webapi/api/merchant/v2/inquiry'; // Sandbox
+            // $url = 'https://passport.duitku.com/webapi/api/merchant/v2/inquiry'; // Production
             $ch = curl_init();
 
-            curl_setopt($ch, CURLOPT_URL, $url); 
-            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $params_string);                                                                  
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
-            curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
-                'Content-Type: application/json',                                                                                
-                'Content-Length: ' . strlen($params_string))                                                                       
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $params_string);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                'Content-Type: application/json',
+                'Content-Length: ' . strlen($params_string))
             );   
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
 
@@ -254,6 +255,7 @@ class LayananFrontController extends Controller
 
             if($httpCode == 200)
             {
+                $result = json_decode($request, true);
                 $donasi=new ZakatOnline;
                 $donasi->id_donasi=$req->id_donasi;
                 $donasi->nama_lengkap=$req->nama_lengkap;
@@ -264,14 +266,18 @@ class LayananFrontController extends Controller
                 $donasi->metode_payment=$req->PaymentId;
                 $donasi->status_donasi='0';
                 $donasi->tanggal_donasi=date('Y-m-d H:i:s');
+                $donasi->noVA=$result['vaNumber'];
                 $donasi->save();
 
-                $result = json_decode($request, true);
-                // header('location: '. $result['paymentUrl']);
-                return redirect()->to($result['paymentUrl'])->send();
+                // $result = json_decode($request, true);
+                header('location: '. $result['paymentUrl']);
                 // echo "paymentUrl :". $result['paymentUrl'] . "<br />";
                 // echo "merchantCode :". $result['merchantCode'] . "<br />";
                 // echo "reference :". $result['reference'] . "<br />";
+                // echo "vaNumber :". $result['vaNumber'] . "<br />";
+                // echo "amount :". $result['amount'] . "<br />";
+                // echo "statusCode :". $result['statusCode'] . "<br />";
+                // echo "statusMessage :". $result['statusMessage'] . "<br />";
                 echo '<pre>';
                 print_r($result);
                 echo '</pre>';
@@ -350,8 +356,12 @@ class LayananFrontController extends Controller
 
             foreach ($emails as $email_number) {
                 $header = imap_headerinfo($inbox, $email_number);
-                $dd['message']=$message = quoted_printable_decode (imap_fetchbody($inbox, $email_number, 1));
-
+                $message = quoted_printable_decode (imap_fetchbody($inbox, $email_number, 1));
+                $msg=trim(str_replace(array("\r","\n","\t"), '',trim(preg_replace('/\t+/', '',$message))));
+                $pattern = "/Kode Virtual Account :(.*?)Jumlah Pembayaran/";
+                $dd['message']=$msg;
+                preg_match($pattern, $msg, $matches);
+                $dd['noVA']=(isset($matches[1]) ? trim(str_replace('-','',$matches[1])) : '');
                 $dd['from']=$from = $header->from[0]->mailbox . "@" . $header->from[0]->host;
                 $dd['toaddress']=$toaddress = $header->toaddress;
                 $mail[]=$dd;
