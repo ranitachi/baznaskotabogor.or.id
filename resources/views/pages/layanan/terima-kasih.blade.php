@@ -40,7 +40,7 @@
                     @endif
                     <h2 style="">Terima Kasih Atas Donasi Yang Anda Salurkan</h2>
                     <br>
-                    <div style="border:1px solid #888;padding:5px 20px;background:#eee">
+                        <div style="border:1px solid #888;padding:5px 20px;background:#eee">
                             <h3>Rincian Donasi :</h3>
                         </div>
                         <div style="border:1px solid #888;padding:20px;border-top:0px">
@@ -78,7 +78,7 @@
                             </table>  
                         </div>
                     </div>
-                </div>
+                
               </div>
 
               <div class="col-md-4">
