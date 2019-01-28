@@ -35,5 +35,6 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
     'leveluser' => [1=>'Administrator',2=>'Pengumpulan',3=>'Pendayagunaan',4=>'SDM',5=>'Keuangan'],
-    'zenziva' => ['userkey'=>'ipo6j7la3q9ya9i3s6k7','passkey'=>'6h7c33rlid30zjxt5vg4']
+    'zenziva' => ['userkey'=>'ipo6j7la3q9ya9i3s6k7','passkey'=>'6h7c33rlid30zjxt5vg4'],
+    'duitku' => ['mcode'=>'D1248','apikey'=>'934ef1002eb09a26c1fe05735b2c82f7']
 ];
