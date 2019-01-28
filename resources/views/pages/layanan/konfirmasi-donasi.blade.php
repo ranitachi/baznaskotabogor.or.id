@@ -1,6 +1,6 @@
 @extends('layouts.front')
 @section('title')
-    <title>Terima Kasih : Badan Amil Zakat (BAZNAS) Kota Bogor</title>
+    <title>Konfirmasi Donasi : Badan Amil Zakat (BAZNAS) Kota Bogor</title>
 @endsection
 @section('main')
     <section class="main">

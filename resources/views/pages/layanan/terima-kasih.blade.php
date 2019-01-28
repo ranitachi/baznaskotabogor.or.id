@@ -31,15 +31,53 @@
                
                 
                 <div id="data">
-                    <h2 style="">Terima Kasih Atas Donasi nya</h2>
-                    <br>
+                    
                      @if(Session::has('pesan'))
                         <div class="alert alert-success" style="width:100%;">
                         <strong>Success!</strong> 
                             {!! Session::get('pesan') !!} 
                         </div>
                     @endif
-                    
+                    <h2 style="">Terima Kasih Atas Donasi Yang Anda Salurkan</h2>
+                    <br>
+                    <div style="border:1px solid #888;padding:5px 20px;background:#eee">
+                            <h3>Rincian Donasi :</h3>
+                        </div>
+                        <div style="border:1px solid #888;padding:20px;border-top:0px">
+                            <table border="0" style="margin-left:20px;">
+                                <tr>
+                                    <td style="width: 150px;">Tanggal Donasi</td>
+                                    <td style="width:10px;">:</td>
+                                    <td>{{$zakatonline ? tgl_indo_time($zakatonline->tanggal_donasi) : ''}}</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 150px;">No. Referensi</td>
+                                    <td style="width:10px;">:</td>
+                                    <td>{{$zakatonline ? $zakatonline->reference : ''}}</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 150px;">Jenis Donasi</td>
+                                    <td style="width:10px;">:</td>
+                                    <td>{{$zakatonline ? $zakatonline->jenis_donasi : ''}}</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 150px;">Jumlah Donasi</td>
+                                    <td style="width:10px;">:</td>
+                                    <td>{{$zakatonline ? number_format($zakatonline->jlh_donasi,0,',','.'): ''}}</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 150px;">Kode Virtual Account</td>
+                                    <td style="width:10px;">:</td>
+                                    <td>{{$zakatonline ? ($zakatonline->noVA): ''}}</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 150px;">Status Donasi</td>
+                                    <td style="width:10px;">:</td>
+                                    <td>{{$zakatonline ? ($zakatonline->status_donasi=='01' ? 'Pending/Menunggu Pembayaran' : ($zakatonline->status_donasi=='00'? 'Berhasil':'Gagal')): ''}}</td>
+                                </tr>
+                            </table>  
+                        </div>
+                    </div>
                 </div>
               </div>
 
