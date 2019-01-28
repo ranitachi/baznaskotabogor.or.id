@@ -270,7 +270,8 @@ class LayananFrontController extends Controller
                 $donasi->save();
 
                 // $result = json_decode($request, true);
-                header('location: '. $result['paymentUrl']);
+                // header('Location: '. $result['paymentUrl']);
+                return redirect()->to($result['paymentUrl'])->send();
                 // echo "paymentUrl :". $result['paymentUrl'] . "<br />";
                 // echo "merchantCode :". $result['merchantCode'] . "<br />";
                 // echo "reference :". $result['reference'] . "<br />";
