@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Config;
 use App\Http\Requests;
 use App\Models\ProfileCCIT;
 use App\Models\Staff;
