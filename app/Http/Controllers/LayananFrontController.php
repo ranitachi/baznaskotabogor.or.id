@@ -278,9 +278,9 @@ class LayananFrontController extends Controller
                 // echo "amount :". $result['amount'] . "<br />";
                 // echo "statusCode :". $result['statusCode'] . "<br />";
                 // echo "statusMessage :". $result['statusMessage'] . "<br />";
-                echo '<pre>';
-                print_r($result);
-                echo '</pre>';
+                // echo '<pre>';
+                // print_r($result);
+                // echo '</pre>';
             }
             else
             {
