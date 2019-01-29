@@ -188,8 +188,10 @@ class LayananFrontController extends Controller
 
     public function donasi_zakat(Request $req)
     {
-        $merchantCode = 'D4505'; // from duitku
-        $merchantKey = 'e2114de17cebc0fce3ddb1b46b64dbd8'; // from duitku
+        // $merchantCode = 'D4505'; // from duitku
+        $merchantCode = 'D1248'; // from duitku
+        $merchantKey = '934ef1002eb09a26c1fe05735b2c82f7'; // from duitku
+        // $merchantKey = 'e2114de17cebc0fce3ddb1b46b64dbd8'; // from duitku
         $paymentAmount = str_replace(',','',$req->jlh_donasi);
         $paymentMethod = $req->PaymentId;
         $merchantOrderId=$iddonasi=$req->id_donasi;
@@ -235,8 +237,8 @@ class LayananFrontController extends Controller
             );
 
             $params_string = json_encode($params);
-            $url = 'http://sandbox.duitku.com/webapi/api/merchant/v2/inquiry'; // Sandbox
-            // $url = 'https://passport.duitku.com/webapi/api/merchant/v2/inquiry'; // Production
+            // $url = 'http://sandbox.duitku.com/webapi/api/merchant/v2/inquiry'; // Sandbox
+            $url = 'https://passport.duitku.com/webapi/api/merchant/v2/inquiry'; // Production
             $ch = curl_init();
 
             curl_setopt($ch, CURLOPT_URL, $url);
