@@ -2,7 +2,7 @@
        
                 <!-- Main Name -->
                 <div class="main_name fadeInDown animated delay1">
-                    <div class="container">
+                    <div class="container" style="width:1200px">
                         @include('include.menu')
                     </div>
                 </div>

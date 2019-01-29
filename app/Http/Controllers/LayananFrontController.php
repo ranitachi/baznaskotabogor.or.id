@@ -188,8 +188,8 @@ class LayananFrontController extends Controller
 
     public function donasi_zakat(Request $req)
     {
-        $merchantCode = 'D1248'; // from duitku
-        $merchantKey = '934ef1002eb09a26c1fe05735b2c82f7'; // from duitku
+        $merchantCode = 'D4505'; // from duitku
+        $merchantKey = 'e2114de17cebc0fce3ddb1b46b64dbd8'; // from duitku
         $paymentAmount = str_replace(',','',$req->jlh_donasi);
         $paymentMethod = $req->PaymentId;
         $merchantOrderId=$iddonasi=$req->id_donasi;
@@ -235,8 +235,8 @@ class LayananFrontController extends Controller
             );
 
             $params_string = json_encode($params);
-            // $url = 'http://sandbox.duitku.com/webapi/api/merchant/v2/inquiry'; // Sandbox
-            $url = 'https://passport.duitku.com/webapi/api/merchant/v2/inquiry'; // Production
+            $url = 'http://sandbox.duitku.com/webapi/api/merchant/v2/inquiry'; // Sandbox
+            // $url = 'https://passport.duitku.com/webapi/api/merchant/v2/inquiry'; // Production
             $ch = curl_init();
 
             curl_setopt($ch, CURLOPT_URL, $url);
@@ -266,7 +266,10 @@ class LayananFrontController extends Controller
                 $donasi->metode_payment=$req->PaymentId;
                 $donasi->status_donasi='0';
                 $donasi->tanggal_donasi=date('Y-m-d H:i:s');
-                $donasi->noVA=$result['vaNumber'];
+                
+                if(isset($result['vaNumber']))
+                    $donasi->noVA=$result['vaNumber'];
+
                 $donasi->save();
 
                 // $result = json_decode($request, true);
@@ -298,8 +301,8 @@ class LayananFrontController extends Controller
         $testi = Testimony::orderByRaw('RAND()')->get();
         $bank = Bank::all();
         $zakatonline = ZakatOnline::where('id_donasi',$request->merchantOrderId)->first();
-        if($zakatonline->hp!='')
-            $this->kirimsms($zakatonline->hp,$zakatonline->jlh_donasi);
+        // if($zakatonline->hp!='')
+        //     $this->kirimsms($zakatonline->hp,$zakatonline->jlh_donasi);
 
         $d_bank=array();
         foreach($bank as $k=>$v)

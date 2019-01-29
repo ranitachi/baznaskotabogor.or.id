@@ -70,11 +70,15 @@
                                     <td style="width:10px;">:</td>
                                     <td>{{$zakatonline ? ($zakatonline->noVA): ''}}</td>
                                 </tr> --}}
-                                <tr>
-                                    <td style="width: 150px;">Kode Virtual Account</td>
-                                    <td style="width:10px;">:</td>
-                                    <td>{{$zakatonline ? ($zakatonline->noVA): ''}}</td>
-                                </tr>
+                                @if ($zakatonline)
+                                    @if ($zakatonline->noVA!='')
+                                        <tr>
+                                            <td style="width: 150px;">Kode Virtual Account</td>
+                                            <td style="width:10px;">:</td>
+                                            <td>{{$zakatonline ? ($zakatonline->noVA): ''}}</td>
+                                        </tr>
+                                    @endif
+                                @endif
                                 <tr>
                                     <td style="width: 150px;">Status Donasi</td>
                                     <td style="width:10px;">:</td>

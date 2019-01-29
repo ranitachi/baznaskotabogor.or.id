@@ -8,9 +8,10 @@
     </div>
 
     <div class="col-md-8 col-sm-8">
+        <a href="{{url('layanan/donasi-zakat')}}" style="color:#fff" class="donasi">
+            <div style="background:red;float:left;padding:30px 10px;text-align:center;margin-top:1px;font-size:15px;border-radius:13px;">KLIK UNTUK BERDONASI</div>
+        </a>
         <ul id="menu" class="sf-menu">
-            <li><a href="{{url('/')}}">Beranda</a>
-            </li>
             
             <li><a href="#">Profil <i class="fa fa-angle-double-down"></i></a>
                 <ul>
@@ -68,3 +69,16 @@
     </div>
 
 </div>
+<style>
+.sf-menu > li
+{
+    padding-right: 2% !important;
+}
+.donasi:hover
+{
+    color:lightblue !important;
+    text-decoration: underline;
+    font-weight: 600
+}
+
+</style>
