@@ -12,6 +12,7 @@
   </head>
 
     <body> 
+    
     <!-- layout-->
     <div id="layout">
 
@@ -33,7 +34,18 @@
         <!-- end Footer -->
     </div>
     <!-- layout-->
-
+    <div id="div_side">
+        <div style="margin: 4px 0 0 2px;">
+            <a href="{{url('layanan/donasi-zakat')}}" >
+                <img src="{{asset('images/icondonasi.png')}}" style="height:75px;float:left" data-toggle="tooltip" title="Donasi Zakat" class="tooltips" data-placement="right">
+            </a>
+        </div>
+        <div style="margin: 4px 0 0 2px;">
+            <a href="{{url('layanan/konfirmasi-zakat')}}" >
+                <img src="{{asset('images/icon-konfirmasi.png')}}" style="height:75px;float:left" data-toggle="tooltip" title="Konfirmasi Zakat" data-placement="right" class="tooltips">
+            </a>
+        </div>
+    </div>
 
     <!-- ======================= JQuery libs =========================== -->
     <!-- local copy of jquery. -->       
@@ -42,6 +54,7 @@
 </body>
 </html>
 <script type="text/javascript">
+    $('.tooltips').tooltip();
     var APP_URL = {!! json_encode(url('/')) !!}
     $.ajaxSetup({
         headers: {
@@ -49,6 +62,31 @@
         }
     });
 </script>
+<style>
+/* #div_side:hover {
+  width: 250px;
+} */
+#div_side {
+    clear: both;
+    position: fixed;
+    top: 300px;
+    width: 80px;
+    height: 160px;
+    border-top: 1px solid #111;
+    border-bottom: 1px solid #111;
+    border-right: 1px solid #111;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    -moz-border-radius-topright: 10px;
+    -moz-border-radius-bottomright: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -webkit-border-bottom-right-radius: 10px;
+    -webkit-box-shadow: 3px 5px 18px #aaa;
+    background: #eeeeee;
+    transition: width 0.5s;
+    -webkit-transition: width 0.5s;
+}
+</style>
 @yield('footscript')
 
 <script type="text/javascript">
