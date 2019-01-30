@@ -87,7 +87,7 @@ Route::get('dokumentasi/{jenis}', 'BerandaFrontController@dokumentasi')->name('d
 
 // ------------ BACKEND ROUTES -------------------
 
-Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
+Route::get('/dashboard/{thn?}/{bln?}', 'DashboardController@index')->name('dashboard.index');
 
 Route::get('cat-data/{id}', 'CatBeritaController@data')->name('cat_berita.data');
 Route::get('cat-form/{id}', 'CatBeritaController@form')->name('cat_berita.form');
@@ -107,6 +107,13 @@ Route::resource('konfirmasizakat','KonfirmasiController');
 Route::get('konfirmasizakat-data/{id}', 'KonfirmasiController@data')->name('konfirmasi.data');
 Route::get('konfirmasizakat-form/{id}', 'KonfirmasiController@form')->name('konfirmasi.form');
 Route::post('konfirmasizakat-status/{id}', 'KonfirmasiController@konfirmasistatus');
+
+Route::resource('donasionline','ZakatOnlineController');
+Route::resource('zakatonline','ZakatOnlineController');
+Route::get('zakatonline-data/{id}', 'ZakatOnlineController@data')->name('donasionline.data');
+Route::get('zakatonline-form/{id}', 'ZakatOnlineController@form')->name('donasionline.form');
+Route::post('zakatonline-status/{id}', 'ZakatOnlineController@donasionlinestatus');
+Route::get('zakatonline-grafik/{thn?}', 'ZakatOnlineController@grafik')->name('donasionline.grafik');
 
 Route::resource('program','ProgramController');
 Route::get('program-data/{id}', 'ProgramController@data')->name('program.data');

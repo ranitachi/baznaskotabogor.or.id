@@ -518,5 +518,15 @@ function getFormFields($data)
         }
 
         return $inputs;
-    }
+	}
+	
+	function jenisdonasi($jns)
+	{
+		$jenis=array('VC'=>'Credit Card (Visa / Master)','BK'=>'BCA KlikPay','MY'=>'Mandiri Clickpay','M1'=>'Mandiri Virtual Account','BT'=>'Permata Bank Virtual Account','B1'=>'CIMB Niaga Virtual Account','A1'=>'ATM Bersama','I1'=>'BNI Virtual Account','I2'=>'Danamon Virtual Account','VA'=>'Maybank Virtual Account','CK'=>'CIMB Click','FT'=>'Ritel','OV'=>'OVO');
+		
+		if(isset($jenis[$jns]))
+			return $jenis[$jns];
+		else
+			return $jns;
+	}
 ?>

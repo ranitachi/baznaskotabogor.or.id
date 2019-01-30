@@ -87,6 +87,7 @@
                 <li class="{{($request_path =='konsultasizakat') ? 'active':''}}"><a href="{{URL::to('/konsultasizakat')}}">Konsultasi Zakat</a></li>
                 <li class="{{($request_path =='konfirmasizakat') ? 'active':''}}"><a href="{{URL::to('/konfirmasizakat')}}">Konfirmasi Zakat</a></li>
                 <li class="{{($request_path =='testimoni') ? 'active':''}}"><a href="{{URL::to('/testimoni')}}">Testimoni</a></li>
+                <li class="{{($request_path =='donasionline') ? 'active':''}}"><a href="{{URL::to('/donasionline')}}">Donasi Online</a></li>
   						 
   					</ul>
   				</li>
