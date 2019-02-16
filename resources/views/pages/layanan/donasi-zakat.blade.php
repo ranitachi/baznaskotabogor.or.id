@@ -227,6 +227,12 @@
 														<img src="{{asset('images/logo/mandiri-clickpay.png')}}">
 														</label>
 													</div>
+													<div class="radio radio-metode-donasi">
+														<label>
+														<input type="radio" class="PaymentId" name="PaymentId" value="OV" data-parsley-multiple="PaymentId" data-parsley-id="1953">
+														<img src="{{asset('images/logo/ovo.jpg')}}">
+														</label>
+													</div>
 
 												</div>
 											</div>
