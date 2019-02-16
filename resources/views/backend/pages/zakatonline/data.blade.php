@@ -26,7 +26,7 @@
         <td class="text-center">{{($v->jenis_donasi)}}</td>
         <td class="text-right">{{number_format($v->jlh_donasi,0,',','.')}}</td>
         <td class="text-center">
-          @if ($v->status_donasi=='00')
+          @if ($v->status_donasi==='00')
             <button class="btn btn-success btn-xs">Sudah Selesai</button>
           @else
             <button class="btn btn-danger btn-xs">Pending/Belum Selesai</button>
