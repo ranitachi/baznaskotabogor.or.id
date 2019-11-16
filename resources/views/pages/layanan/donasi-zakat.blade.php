@@ -239,9 +239,11 @@
 									</div>
 
 									<div class="panel-footer">
-						   				<input type="button" id="btn-donasi" class="btn btn-block btn-lg btn-warning" value="Donasi Sekarang !">
+										   <input type="button" id="btn-donasi" class="btn btn-block btn-lg btn-warning" value="Donasi Sekarang !">
+										   <br>
+										   *Jika Anda Kesulitan Melakukan Donasi Online, Donasi juga dapat Dilakukan Melalui Rekening Zakat dan Infak Kami.&nbsp;
+										   <a href="{{url('layanan/rekening-zakat')}}"><i class="fa fa-chevron-right"></i> Klik Disini</a>
 									</div>
-
 									</div><!-- End panel -->
 
 								</div><!-- end metode pembayaran -->
