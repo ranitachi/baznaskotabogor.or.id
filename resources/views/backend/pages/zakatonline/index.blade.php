@@ -63,13 +63,15 @@ $(document).ready(function(){
 		});
 	}
   loadData(-1);
+  
 });
 function loadData(id)
 {
 	$('div#data-loader').show();
-  $('div#data').load(APP_URL+'/zakatonline-data/'+id,function(){
-    $('div#data-loader').hide();
-    $('table#data-berita').DataTable({
+  	$('div#data').load(APP_URL+'/zakatonline-data/'+id,function(){
+		$('.tooltips').tooltip();
+    	$('div#data-loader').hide();
+    	$('table#data-berita').DataTable({
 			autoWidth: false,
 			dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
 			language: {
@@ -150,6 +152,37 @@ function hapus(id)
 					type: 'error'
 			});
 		});
+	});
+}
+function approvedonasi(id)
+{
+	$('div#modal-approve').modal('show');
+	$('#approvebutton').one('click',function(){
+		// alert(id);
+		$.ajax({
+			url: APP_URL+'/approve-zakatonline/'+id,
+			dataType:'JSON'
+		}).done(function(data){
+			// getPageData();
+			$('#modal-approve').modal('hide');
+						new PNotify({
+						title: 'Berhasil',
+						text: 'Approve Zakat Online Berhasil',
+						addclass: 'alert bg-success alert-styled-right',
+						type: 'success'
+					});
+							loadData(-1);
+				// alert('Category Berhasil Di Tabah');
+			// toastr.success('Item Created Successfully.', 'Success Alert', {timeOut: 5000});
+		}).fail(function(){
+				$('#modal-approve').modal('hide');
+				new PNotify({
+						title: 'Informasi',
+						text: 'Approve Data Zakat Online Gagal',
+						addclass: 'alert alert-warning alert-styled-right',
+						type: 'error'
+				});
+			});
 	});
 }
 </script>

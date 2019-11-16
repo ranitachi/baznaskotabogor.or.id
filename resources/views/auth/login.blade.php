@@ -34,8 +34,13 @@
 				<div class="content">
 
 					<!-- Simple login form -->
+					{{-- @if($errors->any())
+						@foreach ($errors->all() as $error)
+						<h1>{{ $error }}</h1>
+						@endforeach
+					@endif --}}
 					<form role="form" method="POST" action="{{ url('/login') }}">
-            {{ csrf_field() }}
+            		{{ csrf_field() }}
 						<div class="panel panel-body login-form">
 							<div class="text-center">
 								<div style="padding:10px 0;">
@@ -45,7 +50,7 @@
 							</div>
 
 							<div class="form-group has-feedback has-feedback-left">
-								<input type="text" class="form-control" placeholder="Username" name="username" required>
+								<input type="text" class="form-control" placeholder="Username" name="email" required>
 								<div class="form-control-feedback">
 									<i class="icon-user text-muted"></i>
 								</div>

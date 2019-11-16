@@ -319,7 +319,16 @@ class LayananFrontController extends Controller
                 ->with('zakatonline',$zakatonline)
                 ->with('testi',$testi);
     }
-
+    public function approvezakatonline($id)
+    {
+        $zakatonline = ZakatOnline::find($id);
+        $zakatonline->status_donasi='00';
+        $c=$zakatonline->save();
+        if($c)
+            return response()->json(['done']);
+        else
+            return response()->json(['fail']);
+    }
     public function kirimsms($nohp,$jlh)
     {
         $zenziva=Config::get('services.zenziva');

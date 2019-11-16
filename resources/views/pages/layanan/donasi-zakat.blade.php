@@ -188,23 +188,23 @@
 													</div>
 
 													
-													<div class="radio radio-metode-donasi">
+													{{-- <div class="radio radio-metode-donasi">
 														<label>
 														<input type="radio" class="PaymentId" name="PaymentId" value="I2" data-parsley-multiple="PaymentId" data-parsley-id="1953">
 														<img src="{{asset('images/logo/bank-danamon.png')}}">
 														</label>
-													</div>
+													</div> --}}
 
 												</div>
 
 												<div id="online" class="tab-pane fade">
 													
-													<div class="radio radio-metode-donasi">
+													{{-- <div class="radio radio-metode-donasi">
 														<label>
 														<input type="radio" class="PaymentId" name="PaymentId" value="CK" data-parsley-multiple="PaymentId" data-parsley-id="1953">
 														<img src="{{asset('images/logo/logo-cimb-clicks.png')}}">
 														</label>
-													</div>
+													</div> --}}
 
 													
 													<div class="radio radio-metode-donasi">
@@ -221,12 +221,12 @@
 														<img src="{{asset('images/logo/icon-bca-klikpay.png')}}">
 														</label>
 													</div>
-													<div class="radio radio-metode-donasi">
+													{{-- <div class="radio radio-metode-donasi">
 														<label>
 														<input type="radio" class="PaymentId" name="PaymentId" value="MY" data-parsley-multiple="PaymentId" data-parsley-id="1953">
 														<img src="{{asset('images/logo/mandiri-clickpay.png')}}">
 														</label>
-													</div>
+													</div> --}}
 													{{-- <div class="radio radio-metode-donasi">
 														<label>
 														<input type="radio" class="PaymentId" name="PaymentId" value="OV" data-parsley-multiple="PaymentId" data-parsley-id="1953">

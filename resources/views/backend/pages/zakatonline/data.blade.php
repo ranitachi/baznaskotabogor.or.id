@@ -34,7 +34,8 @@
         </td>
         <td class="text-center">
           {{-- <a href="{{URL::to('/zakatonline-form')}}/{{$v->id}}"><i class="icon-pencil5"></i></a> --}}
-          <a href="javascript:hapus({{$v->id}})"><i class="icon-trash"></i></a>
+          <a href="javascript:hapus({{$v->id}})" class="text-danger"><i class="icon-trash"></i></a>
+          <a href="javascript:approvedonasi({{$v->id}})" data-popup="tooltip" class="tooltips" title="Approve Donasi" data-original-title="Approve Donasi"><i class="icon-stack-check"></i></a>
         </td>
       </tr>
     @endforeach

@@ -60,6 +60,7 @@ Route::post('layanan/{id}','LayananFrontController@simpan');
 Route::post('upload-konfirmasi','LayananFrontController@upload_konfirmasi');
 Route::get('hapus-foto-konfirmasi/{file}','LayananFrontController@hapus_foto_konfirmasi');
 Route::post('donasi-zakat','LayananFrontController@donasi_zakat');
+Route::get('approve-zakatonline/{id}','LayananFrontController@approvezakatonline');
 // Route::get('callback','LayananFrontController@callback');
 // Route::get('returndonasi','LayananFrontController@returndonasi');
 Route::get('terima-kasih','LayananFrontController@terima_kasih');
