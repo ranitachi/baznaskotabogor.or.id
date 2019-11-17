@@ -1,4 +1,4 @@
-<link href="{{asset('asset/css/style.css')}}" rel="stylesheet" media="screen"> 
+  <link href="{{asset('asset/css/style.css')}}" rel="stylesheet" media="screen"> 
 
     <!-- Skins styles -->
     <link href="{{asset('asset/css/skins/red/red.css')}}" rel="stylesheet" media="screen" class="skin">  

@@ -20,6 +20,7 @@ class ProfileFrontController extends Controller
       $kontak = Contact::all();
       $profil = ProfileCCIT::all();
        
+      // return view('depan.pages.profil')
       return view('front.pages.profile.index')
         ->with('kontak',$kontak)
         ->with('profil',$profil)
@@ -31,7 +32,8 @@ class ProfileFrontController extends Controller
       $kontak = Contact::all();
       $profil = ProfileCCIT::all();
        
-      return view('pages.kontak.index')
+      // return view('pages.kontak.index')
+      return view('depan.pages.kontak')
         ->with('kontak',$kontak)
         ->with('profil',$profil);
     }
@@ -39,7 +41,8 @@ class ProfileFrontController extends Controller
     public function detailprofil($jenis)
     {
       $profil = ProfileCCIT::where('category','like', $jenis)->first();
-      return view('pages.profil.index')
+      // return view('pages.profil.index')
+      return view('depan.pages.profil')
         ->with('profil', $profil);
       
     }

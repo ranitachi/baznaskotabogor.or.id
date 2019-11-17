@@ -199,3 +199,7 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
  });
 
  Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+
+ //DEPAN BARU
+
+ Route::get('v2','V2\MainController@index');

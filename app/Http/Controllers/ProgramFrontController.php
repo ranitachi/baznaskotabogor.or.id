@@ -20,7 +20,8 @@ class ProgramFrontController extends Controller
         $program = Program::all();
         $testi=Testimony::orderByRaw('Rand()')->limit(2)->get();
         // $getinstagram = InstagramImage::getImage();
-        return view('pages.program.index')
+        // return view('pages.program.index')
+        return view('depan.pages.program')
             ->with('testi',$testi)
             ->with('id',$id)
             ->with('kontak',$kontak)
@@ -37,8 +38,9 @@ class ProgramFrontController extends Controller
         {
             $program[str_slug($v->nama_program)]=$v;
         }
-        return view('pages.program.detail')
-            ->with('program',$program)
+        // return view('pages.program.detail')
+        return view('depan.pages.program')
+            ->with('program',$program[$slug])
             ->with('testi',$testi)
             ->with('slug',$slug);
     }

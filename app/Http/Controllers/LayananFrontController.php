@@ -38,7 +38,8 @@ class LayananFrontController extends Controller
 
         $jenis=str_replace('-',' ',$id);
         $layanan=array();
-        return view('pages.layanan.index')
+        // return view('pages.layanan.index')
+        return view('depan.pages.layanan.index')
             ->with('id',$id)
             ->with('jenis',$jenis)
             ->with('bank',$d_bank)
@@ -188,10 +189,10 @@ class LayananFrontController extends Controller
 
     public function donasi_zakat(Request $req)
     {
-        // $merchantCode = 'D4505'; // from duitku
-        $merchantCode = 'D1248'; // from duitku
-        $merchantKey = '934ef1002eb09a26c1fe05735b2c82f7'; // from duitku
-        // $merchantKey = 'e2114de17cebc0fce3ddb1b46b64dbd8'; // from duitku
+        // $merchantCode = 'D1248'; // from duitku
+        // $merchantKey = '934ef1002eb09a26c1fe05735b2c82f7'; // from duitku
+        $merchantCode = 'D4505'; // from duitku
+        $merchantKey = 'e2114de17cebc0fce3ddb1b46b64dbd8'; // from duitku
         $paymentAmount = str_replace(',','',$req->jlh_donasi);
         $paymentMethod = $req->PaymentId;
         $merchantOrderId=$iddonasi=$req->id_donasi;
@@ -201,8 +202,10 @@ class LayananFrontController extends Controller
         $additionalParam= $req->nama_lengkap;
         $merchantUserInfo = $req->nama_lengkap;
         $customerVaName = $req->nama_lengkap;
-        $callbackUrl = 'http://payment.baznaskotabogor.or.id/callback.php'; // url for callback
-        $returnUrl = 'http://payment.baznaskotabogor.or.id/return.php'; // url for redirect
+        // $callbackUrl = 'http://payment.baznaskotabogor.or.id/callback.php'; // url for callback
+        // $returnUrl = 'http://payment.baznaskotabogor.or.id/return.php'; // url for redirect
+        $callbackUrl = 'http://localhost/payment/payment/callback.php'; // url for callback
+        $returnUrl = 'http://localhost/payment/payment/return.php'; // url for redirect
         $expiryPeriod = '10'; // set the expired time in minutes
 
         if(strpos($paymentMethod,'Transfer')===false)
@@ -237,8 +240,8 @@ class LayananFrontController extends Controller
             );
 
             $params_string = json_encode($params);
-            // $url = 'http://sandbox.duitku.com/webapi/api/merchant/v2/inquiry'; // Sandbox
-            $url = 'https://passport.duitku.com/webapi/api/merchant/v2/inquiry'; // Production
+            $url = 'http://sandbox.duitku.com/webapi/api/merchant/v2/inquiry'; // Sandbox
+            // $url = 'https://passport.duitku.com/webapi/api/merchant/v2/inquiry'; // Production
             $ch = curl_init();
 
             curl_setopt($ch, CURLOPT_URL, $url);
@@ -368,7 +371,8 @@ class LayananFrontController extends Controller
             $d_bank[$v->kategori][]=$v;
         }
 
-        return view('pages.layanan.konfirmasi-donasi')
+        // return view('pages.layanan.konfirmasi-donasi')
+        return view('depan.pages.layanan.konfirmasi-donasi')
                 ->with('bank',$d_bank)
                 ->with('kontak',$kontak)
                 ->with('zakatonline',$zakatonline)

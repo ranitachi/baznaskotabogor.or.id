@@ -153,14 +153,16 @@ class BerandaFrontController extends Controller
         }
 
         if ($request->ajax()) {
-             return view('pages.publikasi.data')
+            //  return view('pages.publikasi.data')
+             return view('depan.pages.berita.data')
                 ->with('berita',$berita)
                 ->with('cat',$category)
                 ->with('hal',$hal)
                 ->render();
         }
 
-        return view('pages.publikasi.index')
+        // return view('pages.publikasi.index')
+        return view('depan.pages.berita.index')
             ->with('hal',$hal)
             ->with('berita',$berita)
             ->with('jenis',$jenis)
@@ -184,7 +186,8 @@ class BerandaFrontController extends Controller
         $video=Video::where('flag','=',1)->orderByRaw('RAND()')->limit(1)->get()->first();
         $program=Program::where('flag','=',1)->get();
         $testi=Testimony::orderByRaw('RAND()')->limit(2)->get();
-        return view('pages.publikasi.detail')
+        // return view('pages.publikasi.detail')
+        return view('depan.pages.berita.detail')
             ->with('pub',$pub)
             ->with('jenis',$jenis)
             ->with('vid',$video)
@@ -224,7 +227,8 @@ class BerandaFrontController extends Controller
         if($jenis=='video')
         {
             if ($request->ajax()) {
-                return view('pages.video.data')
+                // return view('pages.video.data')
+                return view('depan.pages.galeri.video-data')
                     ->with('program',$program)
                     ->with('testi',$testi)
                     ->with('vid',$video)
@@ -233,7 +237,8 @@ class BerandaFrontController extends Controller
                     ->render();
             }
 
-            return view('pages.video.index')
+            // return view('pages.video.index')
+            return view('depan.pages.galeri.video')
                 ->with('program',$program)
                 ->with('testi',$testi)
                 ->with('hal',$hal)
@@ -243,7 +248,7 @@ class BerandaFrontController extends Controller
         else
         {
             if ($request->ajax()) {
-                return view('pages.foto.data')
+                return view('depan.pages.galeri.foto-data')
                     ->with('program',$program)
                     ->with('testi',$testi)
                     ->with('galeri',$galeri)
@@ -252,7 +257,8 @@ class BerandaFrontController extends Controller
                     ->render();
             }
 
-            return view('pages.foto.index')
+            // return view('pages.foto.index')
+            return view('depan.pages.galeri.foto')
                 ->with('program',$program)
                 ->with('testi',$testi)
                 ->with('hal',$hal)
