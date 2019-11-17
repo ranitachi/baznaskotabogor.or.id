@@ -22,7 +22,8 @@ Route::get('logout', function(){
 
 // ------------ FRONTEND ROUTES -------------------
 
-Route::get('/', 'BerandaFrontController@index');
+// Route::get('/', 'BerandaFrontController@index');
+Route::get('/', 'V2\MainController@index');
 Route::get('biografi/{name}', 'BerandaFrontController@biografi');
 Route::get('publikasi/{jenis}', 'BerandaFrontController@publikasi')->name('publikasi');
 Route::get('publikasi/{jenis}/{slug}', 'BerandaFrontController@detail')->name('publikasi.detail');
