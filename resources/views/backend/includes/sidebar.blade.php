@@ -116,6 +116,9 @@
           <li class="{{(strtok($request_path, '-') =='event' ? 'active': '')}}">
   					<a href="{{URL::to('/event')}}" class="legitRipple"><i class="icon-calendar2"></i> <span>Event</span></a>
   				</li>
+          <li class="{{(strtok($request_path, '-') =='statistik' ? 'active': '')}}">
+  					<a href="{{URL::to('/statistik')}}" class="legitRipple"><i class="icon-chart"></i> <span>Statistik</span></a>
+  				</li>
 
 
 

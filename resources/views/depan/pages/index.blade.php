@@ -9,3 +9,7 @@
     @include('depan.pages.home')
     
 @endsection
+
+@section('footscript')
+
+@endsection

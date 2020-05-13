@@ -28,6 +28,6 @@
         </div>
     @include('depan.includes.footer',$data)
     @include('depan.includes.script')
-    @yield('footscript')
+	@yield('footscript')
 </body>
 </html>

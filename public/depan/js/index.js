@@ -10,6 +10,7 @@ $(document).ready(function() {
   var sync10 = $("#sync10");
   var sync11 = $("#sync11");
   var sync111 = $("#sync111");
+  var sync110 = $("#sync110");
 
   sync1.owlCarousel({
     responsive:{
@@ -31,8 +32,50 @@ $(document).ready(function() {
     responsiveRefreshRate : 200,
     navText: ['<svg width="100%" height="100%" viewBox="0 0 11 20"><path style="fill:none;stroke-width: 1px;stroke: #000;" d="M9.554,1.001l-8.607,8.607l8.607,8.606"/></svg>','<svg width="100%" height="100%" viewBox="0 0 11 20" version="1.1"><path style="fill:none;stroke-width: 1px;stroke: #000;" d="M1.054,18.214l8.606,-8.606l-8.606,-8.607"/></svg>'],
   });
-
-  sync2.owlCarousel({
+  sync110.owlCarousel({
+      responsive: {
+          0: {
+              items: 1,
+          },
+          600: {
+              items: 2,
+          },
+          800: {
+              items: 3,
+          },
+          1200: {
+              items: 4,
+          }
+      },
+    slideSpeed : 2000,
+    nav: false,
+    autoplay: true,
+    dots: true,
+    loop: true,
+    responsiveRefreshRate : 200,
+    navText: ['<svg width="100%" height="100%" viewBox="0 0 11 20"><path style="fill:none;stroke-width: 1px;stroke: #000;" d="M9.554,1.001l-8.607,8.607l8.607,8.606"/></svg>','<svg width="100%" height="100%" viewBox="0 0 11 20" version="1.1"><path style="fill:none;stroke-width: 1px;stroke: #000;" d="M1.054,18.214l8.606,-8.606l-8.606,-8.607"/></svg>'],
+  });
+  sync3.owlCarousel({
+    responsive:{
+        0:{
+            items:1,
+        },
+        768:{
+            items:2,
+        },
+        992:{
+            items:3,
+        }
+    },
+    slideSpeed : 2000,
+    nav: false,
+    autoplay: true,
+    dots: true,
+    loop: true,
+    responsiveRefreshRate : 200,
+    navText: ['<svg width="100%" height="100%" viewBox="0 0 11 20"><path style="fill:none;stroke-width: 1px;stroke: #000;" d="M9.554,1.001l-8.607,8.607l8.607,8.606"/></svg>','<svg width="100%" height="100%" viewBox="0 0 11 20" version="1.1"><path style="fill:none;stroke-width: 1px;stroke: #000;" d="M1.054,18.214l8.606,-8.606l-8.606,-8.607"/></svg>'],
+  });
+sync2.owlCarousel({
     responsive:{
         0:{
             items:1,
@@ -53,26 +96,26 @@ $(document).ready(function() {
     navText: ['<svg width="100%" height="100%" viewBox="0 0 11 20"><path style="fill:none;stroke-width: 1px;stroke: #000;" d="M9.554,1.001l-8.607,8.607l8.607,8.606"/></svg>','<svg width="100%" height="100%" viewBox="0 0 11 20" version="1.1"><path style="fill:none;stroke-width: 1px;stroke: #000;" d="M1.054,18.214l8.606,-8.606l-8.606,-8.607"/></svg>'],
   });
 
-  sync3.owlCarousel({
-    responsive:{
-        0:{
-            items:1,
-        },
-        600:{
-            items:3,
-        },
-        980:{
-            items:4,
-        }
-    },
-    slideSpeed : 2000,
-    nav: false,
-    autoplay: true,
-    dots: false,
-    loop: true,
-    responsiveRefreshRate : 200,
-    navText: ['<svg width="100%" height="100%" viewBox="0 0 11 20"><path style="fill:none;stroke-width: 1px;stroke: #000;" d="M9.554,1.001l-8.607,8.607l8.607,8.606"/></svg>','<svg width="100%" height="100%" viewBox="0 0 11 20" version="1.1"><path style="fill:none;stroke-width: 1px;stroke: #000;" d="M1.054,18.214l8.606,-8.606l-8.606,-8.607"/></svg>'],
-  });
+//   sync3.owlCarousel({
+//     responsive:{
+//         0:{
+//             items:1,
+//         },
+//         600:{
+//             items:3,
+//         },
+//         980:{
+//             items:4,
+//         }
+//     },
+//     slideSpeed : 2000,
+//     nav: false,
+//     autoplay: true,
+//     dots: false,
+//     loop: true,
+//     responsiveRefreshRate : 200,
+//     navText: ['<svg width="100%" height="100%" viewBox="0 0 11 20"><path style="fill:none;stroke-width: 1px;stroke: #000;" d="M9.554,1.001l-8.607,8.607l8.607,8.606"/></svg>','<svg width="100%" height="100%" viewBox="0 0 11 20" version="1.1"><path style="fill:none;stroke-width: 1px;stroke: #000;" d="M1.054,18.214l8.606,-8.606l-8.606,-8.607"/></svg>'],
+//   });
 
   sync4.owlCarousel({
     items: 1,

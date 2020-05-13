@@ -2164,6 +2164,9 @@ a:focus{
 .home4 .campaigns #sync1 .item .z .ct .raised b{
 	color: #8CCA4F;
 }
+.home4 .campaigns #sync110 .item .z .ct .raised b{
+	color: #8CCA4F;
+}
 .home4 .campaigns .title h3{
 	color: #fff;
 }
@@ -2582,6 +2585,15 @@ a:focus{
 .home5 .campaigns #sync1 .item .z .ct .raised b{
 	color: #E43844;
 }
+.home5 .campaigns #sync110 .item .z .ct .donate a{
+	background-color: #E43844;
+}
+.home5 .campaigns #sync110 .item .z .ct .donate a:hover{
+	background-color: #000;
+}
+.home5 .campaigns #sync110 .item .z .ct .raised b{
+	color: #E43844;
+}
 .home5 .weneed .donate .button_donate a{
 	background-color: #E43844;
 }
@@ -2693,6 +2705,9 @@ a:focus{
 }
 
 .home5 .campaigns #sync1 .item .z .ct .text_show h3 > a:hover{
+	color: #E43844;
+}
+.home5 .campaigns #sync110 .item .z .ct .text_show h3 > a:hover{
 	color: #E43844;
 }
 .home5 .bg_full-z img{
@@ -3781,7 +3796,17 @@ body.page_list_posts.page_detail.pages_item .sidebar-inner .related_camp .z .ct 
     margin-bottom: -9px;
     margin-left: 0;
 }
+.home5 .campaigns #sync110 .item .img .img-2 img {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin-bottom: -9px;
+    margin-left: 0;
+}
 .home5 .campaigns #sync1 .item .img img{
+	width: 100%;
+}
+.home5 .campaigns #sync110 .item .img img{
 	width: 100%;
 }
 .home3 .campaigns #sync1 .item .img .img-2 img {
@@ -3791,7 +3816,17 @@ body.page_list_posts.page_detail.pages_item .sidebar-inner .related_camp .z .ct 
     margin-bottom: -9px;
     margin-left: 0;
 }
+.home3 .campaigns #sync110 .item .img .img-2 img {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin-bottom: -9px;
+    margin-left: 0;
+}
 .home3 .campaigns #sync1 .item .img img{
+	width: 100%;
+}
+.home3 .campaigns #sync110 .item .img img{
 	width: 100%;
 }
 
@@ -4403,6 +4438,9 @@ body.page_contact.pages_item .message_contact .contact-message-feedback-form .su
 	background-color: #000;
 }
 .home4 .campaigns #sync1 .item .z .ct .text_show h3 > a:hover{
+	color: #8CCA4F;
+}
+.home4 .campaigns #sync110 .item .z .ct .text_show h3 > a:hover{
 	color: #8CCA4F;
 }
 .home5 .footer .footer-1{

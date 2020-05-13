@@ -185,6 +185,7 @@ Route::resource('kalender','KalenderController');
 Route::get('kalender-data/{id}', 'KalenderController@data')->name('kalender.data');
 Route::get('kalender-form/{id}', 'KalenderController@form')->name('kalender.form');
 
+Route::resource('statistik','StatistikController');
 Route::resource('sejarah','ProfileCCITController');
 Route::resource('kurikulum','ProfileCCITController');
 Route::resource('struktur-organisasi','ProfileCCITController');
@@ -204,3 +205,5 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
  //DEPAN BARU
 
  Route::get('v2','V2\MainController@index');
+
+ Route::get('getprogram','Controller@getprogram');

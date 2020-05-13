@@ -78,13 +78,63 @@
 		{{-- </div>
 	</div>
 </div> --}}
+<div class="campaigns">
+	<div class="container">
+		<div class="row">
+			<div class="title text-center">
+				<h2 style="font-weight: 400;font-size: 35px;font-family: Roboto slab;text-align: center;" class="title">Donasi Online BAZNAS Kota Bogor</h2>
+				{{-- <p>Children are waiting for your help...</p> --}}
+			</div>
+			<div id="sync110" class="owl-carousel owl-theme">
+                @foreach ($getprogram as $item)
+                    
+                    <div class="item" style="background: #fff;height: 400px;margin: 0px 10px;">
+                        <div class="z">
+                            <div class="img">
+                                <div class="img-1 text-center">
+                                    {{-- <img src="{{asset('images/logo/ZAKAT-BAZNAS.png')}}" alt="" style="width:50%;margin-top:40px;"> --}}
+                                    <img src="https://paybill.id/cfd/upload/banner-program/compress/{{ $item->thumbnail }}" alt="" style="width:100%;height:200px">
+                                </div>
+                                
+                            </div>
+                            <div class="ct">
+                                <div class="text_show" style="padding:0 10px;">
+									<h3 class="" style="min-height:50px;font-family: Roboto slab;"><a href="https://donasi.online/baznas-kota-bogor/program/{{ $item->urlDomain }}" target="_blank">{{ $item->judulProgram }}</a></h3>
+									<hr>
+									<div class="row">
+										<div class="col-md-6 text-center">
+											<label class="text-info">Dana Terkumpul</label>
+										</div>
+										<div class="col-md-6">
+											<div style="font-size:20px;font-weight:bold;font-family: Roboto slab;" class="text-success text-right">Rp {{ number_format($item->listAkumulasiPenerimaanLain[0]->donasi,0,'.',',') }}</div>    
+										</div>
+									</div>
+                                    
+                                </div>
+                                <div class="donate">
+                                    <div class="button_donate pull-right" style="bottom:10px;position: absolute;right:10px">
+                                        <a href="https://donasi.online/baznas-kota-bogor/program/{{ $item->urlDomain }}" target="_blank">Donasi Sekarang</a>
+                                    </div>
+                                    
+                                </div>
+                                <div class="raised">
+                                    &nbsp;
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+			</div>
+		</div>
+	</div>
+</div>
 <div class="upcoming">
 	<div class="container">
 		<div class="row">
-			<div class="heading col-lg-12 col-md-12 col-sm-12 col-xs-12">
-				 <h2 class="title">Profil BAZNAS Kota Bogor</h2>
-			</div>
-			<div class="i-gsc-column col-lg-6 col-md-6 col-sm-12 col-xs-12">
+			{{-- <div class="heading col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				 <h2 class="title">Donasi Online BAZNAS Kota Bogor</h2>
+			</div> --}}
+			{{-- <div class="i-gsc-column col-lg-6 col-md-6 col-sm-12 col-xs-12"> --}}
 				{{-- <ul>
 					<li>
 						<div class="event-date">
@@ -121,13 +171,13 @@
 					</li>
                 </ul> --}}
                 @php
-                    $profil=\App\Models\ProfileCCIT::where('flag',1)->get();
-                    $prof=array();
-                    foreach ($profil as $key => $value) {
-                        $prof[str_slug($value->title)]=$value;
-                    }
+                    // $profil=\App\Models\ProfileCCIT::where('flag',1)->get();
+                    // $prof=array();
+                    // foreach ($profil as $key => $value) {
+                    //     $prof[str_slug($value->title)]=$value;
+                    // }
                 @endphp
-                <div class="panel-group" id="accordion">
+                {{-- <div class="panel-group" id="accordion">
                     <div class="panel panel-success">
                         <div class="panel-heading">
                         <h4 class="panel-title">
@@ -194,13 +244,14 @@
                         </div>
                     </div>
                 </div>
-			</div>
-			<div class="i-gsc-column col-lg-6 col-md-6 col-sm-12 col-xs-12">
+			</div> --}}
+
+			<div class="i-gsc-column col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<div class="video-inner">
 					{{-- <div class="image">
 						<img src="{{asset('depan')}}/images/bg-video.jpg" alt="">
 					</div> --}}
-					<div class="video-body">
+					<div class="video-body text-center">
 						{{-- <a href="https://www.youtube.com/watch?v=4g7zRxRN1Xk" class="popup-video gsc-video-link">
 							<i class="fa icon-play" aria-hidden="true"></i>
                         </a> --}}
@@ -219,11 +270,11 @@
                                         $url = $video->url;
                                         preg_match('/[\\?\\&]v=([^\\?\\&]+)/', $url, $matches);
                                         $id = $matches[1];
-                                        $width = '100%';
-                                        $height = '200';
+                                        $width = '50%';
+                                        $height = '400';
                                         $v='<iframe id="ytplayer" type="text/html" width="'.$width.'" height="'.$height.'"
                                             src="https://www.youtube.com/embed/'.$id.'?rel=0&showinfo=0&color=white&iv_load_policy=3"
-                                            frameborder="0" allowfullscreen style="padding:5px;border:1px solid #eee;height:420px !important;"></iframe> ';
+                                            frameborder="0" allowfullscreen style="padding:5px;border:1px solid #eee;"></iframe> ';
                                         
                                         echo $v;
                                     }
@@ -498,44 +549,7 @@
                 </div>
             </div>
         @endforeach
-		{{-- <div class="item">
-			<div class="bg_full" style="background-image: url(../../images/bg_new2.jpg);">
-			</div>
-			<div class="content_box">
-				<div class="content-inner">
-					 <div class="title">
-						<a href="">Displaying God's Love to Iraq's Displaced People</a>
-					</div>
-					<div class="desc">
-						<p>Proin porta leo et facilisis pretium. Elements sapien neque mentm sapien et neque lobortis laoreet. Petesque habitant morbi tristique senectus et netus malesuada tristique senectus et netus</p>
-					</div>
-					<div class="donate">
-						<div class="button_donate">
-							<a href="">Read more</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="item">
-			<div class="bg_full" style="background-image: url(../../images/bg_new3.jpg);">
-			</div>
-			<div class="content_box">
-				<div class="content-inner">
-					 <div class="title">
-						<a href="">Displaying God's Love to Iraq's Displaced People</a>
-					</div>
-					<div class="desc">
-						<p>Proin porta leo et facilisis pretium. Elements sapien neque mentm sapien et neque lobortis laoreet. Petesque habitant morbi tristique senectus et netus malesuada tristique senectus et netus</p>
-					</div>
-					<div class="donate">
-						<div class="button_donate">
-							<a href="">Read more</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div> --}}
+		
 	</div>
 </div>
 
@@ -561,101 +575,184 @@
                         </div>
                     </div>
                 @endforeach
-				{{-- <div class="item">
-					<div class="img">
-						<img src="{{asset('depan')}}/images/meet_img_02.jpg" alt="">
-						<div class="social">
-							<span>
-								<a href=""><i class="fa fa-facebook"></i></a><br>
-								<a href=""><i class="fa fa-twitter"></i></a><br>
-								<a href=""><i class="fa fa-dribbble"></i></a><br>
-								<a href=""><i class="fa fa-google-plus"></i></a><br>
-								<a href=""><i class="fa fa-instagram"></i></a>
-							</span>
-						</div>
-					</div>
-					<div class="text_show">
-						<h3><a href="#">Gareth Sougate</a></h3>
-						<p>Duis elentum sapien neque  Habitant morbi trique</p>
-					</div>
-				</div>
-				<div class="item">
-					<div class="img">
-						<img src="{{asset('depan')}}/images/meet_img_01.jpg" alt="">
-						<div class="social">
-							<span>
-								<a href=""><i class="fa fa-facebook"></i></a><br>
-								<a href=""><i class="fa fa-twitter"></i></a><br>
-								<a href=""><i class="fa fa-dribbble"></i></a><br>
-								<a href=""><i class="fa fa-google-plus"></i></a><br>
-								<a href=""><i class="fa fa-instagram"></i></a>
-							</span>
-						</div>
-					</div>
-					<div class="text_show">
-						<h3><a href="#">Michale Blacksun</a></h3>
-						<p>Duis elentum sapien neque  Habitant morbi trique</p>
-					</div>
-				</div>
-				<div class="item">
-					<div class="img">
-						<img src="{{asset('depan')}}/images/meet_img_03.jpg" alt="">
-						<div class="social">
-							<span>
-								<a href=""><i class="fa fa-facebook"></i></a><br>
-								<a href=""><i class="fa fa-twitter"></i></a><br>
-								<a href=""><i class="fa fa-dribbble"></i></a><br>
-								<a href=""><i class="fa fa-google-plus"></i></a><br>
-								<a href=""><i class="fa fa-instagram"></i></a>
-							</span>
-						</div>
-					</div>
-					<div class="text_show">
-						<h3><a href="#">Jessica Albalis</a></h3>
-						<p>Duis elentum sapien neque  Habitant morbi trique</p>
-					</div>
-				</div>
-				<div class="item">
-					<div class="img">
-						<img src="{{asset('depan')}}/images/meet_img_04.jpg" alt="">
-						<div class="social">
-							<span>
-								<a href=""><i class="fa fa-facebook"></i></a><br>
-								<a href=""><i class="fa fa-twitter"></i></a><br>
-								<a href=""><i class="fa fa-dribbble"></i></a><br>
-								<a href=""><i class="fa fa-google-plus"></i></a><br>
-								<a href=""><i class="fa fa-instagram"></i></a>
-							</span>
-						</div>
-					</div>
-					<div class="text_show">
-						<h3><a href="#">Maria Okazaki</a></h3>
-						<p>Duis elentum sapien neque  Habitant morbi trique</p>
-					</div>
-				</div>
-				<div class="item">
-					<div class="img">
-						<img src="{{asset('depan')}}/images/meet_img_05.jpg" alt="">
-						<div class="social">
-							<span>
-								<a href=""><i class="fa fa-facebook"></i></a><br>
-								<a href=""><i class="fa fa-twitter"></i></a><br>
-								<a href=""><i class="fa fa-dribbble"></i></a><br>
-								<a href=""><i class="fa fa-google-plus"></i></a><br>
-								<a href=""><i class="fa fa-instagram"></i></a>
-							</span>
-						</div>
-					</div>
-					<div class="text_show">
-						<h3><a href="#">Tran Tuan Tu</a></h3>
-						<p>Duis elentum sapien neque  Habitant morbi trique</p>
-					</div>
-				</div> --}}
 			</div>
 		</div>
 	</div>
 </div>
-
+<div class="campaigns">
+	<div class="container">
+		<div class="row">
+			<div class="title">
+				<h3>Statistik Tahun <b>{{ date('Y') }}</b></h3>
+			</div>
+          <div class="col-sm-6 col-md-3 col-lg-3">
+            <article class="post clearfix maxwidth600 mb-30" style="display: block;">
+              <div class="entry-header">
+                <div class="entry-meta meta-absolute text-center p-15">
+                <div class="display-table">
+                </div>
+                </div>
+              </div>
+              <div class="entry-content border-1px text-center">
+                <h4 class="text-theme-colored entry-title mt-10"><b>MUZAKI</b></h4>
+				<hr>
+				@php
+					$muzzaki=penyebut( isset($jlh_muzzaki[date('Y')]) ? $jlh_muzzaki[date('Y')] : 0 );
+				@endphp
+                <span style="font-size: 50px; font-weight: bold;" class="text-theme-colored">{{ $muzzaki['nilai'] }}</span><span style="font-size: 20px" class="text-theme-colored"> {{ $muzzaki['satuan'] }}</span>
+                <p class="mb-10 font-13"><small>&nbsp;</small></p>
+                <div class="clearfix"></div>
+              </div>
+            </article>
+          </div>
+          <div class="col-sm-6 col-md-3 col-lg-3">
+            <article class="post clearfix maxwidth600 mb-30" style="display: block;">
+              <div class="entry-header">
+                <div class="entry-meta meta-absolute text-center p-15">
+                <div class="display-table">
+                </div>
+                </div>
+              </div>
+              <div class="entry-content border-1px text-center">
+                <h4 class="text-center text-theme-colored entry-title mt-10"><b>PENGHIMPUNAN</b></h4>
+				<hr>
+				@php
+					$penghimpun=penyebut( isset($jlh_penghimpunan[date('Y')]) ? $jlh_penghimpunan[date('Y')] : 0 );
+				@endphp
+                <span style="font-size: 50px; font-weight: bold;" class="text-theme-colored">{{ $penghimpun['nilai'] }}</span><span style="font-size: 20px" class="text-theme-colored"> {{ $penghimpun['satuan'] }}</span>
+                <p class="text-center mb-10 font-13"><small>&nbsp;</small></p>
+                <div class="clearfix"></div>
+              </div>
+            </article>
+          </div>
+          <div class="col-sm-6 col-md-3 col-lg-3">
+            <article class="post clearfix maxwidth600 mb-30" style="display: block;">
+              <div class="entry-header">
+                <div class="entry-meta meta-absolute text-center p-15">
+                <div class="display-table">
+                </div>
+                </div>
+              </div>
+              <div class="entry-content border-1px text-center">
+                <h4 class="text-center text-theme-colored entry-title mt-10"><b>PENYALURAN</b></h4>
+				<hr>
+				@php
+					$penyaluran=penyebut( isset($jlh_penyaluran[date('Y')]) ? $jlh_penyaluran[date('Y')] : 0 );
+				@endphp
+                <span style="font-size: 50px; font-weight: bold;" class="text-theme-colored">{{ $penyaluran['nilai'] }}</span><span style="font-size: 20px" class="text-theme-colored"> {{ $penyaluran['satuan'] }}</span>
+                <p class="text-center mb-10 font-13"><small>&nbsp;</small></p>
+                <div class="clearfix"></div>
+              </div>
+            </article>
+          </div>
+          <div class="col-sm-6 col-md-3 col-lg-3">
+            <article class="post clearfix maxwidth600 mb-10">
+              <div class="entry-header">
+                <div class="entry-meta meta-absolute text-center p-15">
+                <div class="display-table">
+                </div>
+                </div>
+              </div>
+              <div class="entry-content border-1px text-center">
+                <h4 class="text-center text-theme-colored entry-title mt-10"><b>MUSTAHIK</b></h4>
+				<hr>
+				@php
+					$mustahik=penyebut( isset($jlh_mustahik[date('Y')]) ? $jlh_mustahik[date('Y')] : 0 );
+				@endphp
+                <span style="font-size: 50px; font-weight: bold;" class="text-theme-colored">{{ $mustahik['nilai'] }}</span><span style="font-size: 20px" class="text-theme-colored"> {{ $mustahik['satuan'] }}</span>
+                <p class="text-center mb-10 font-13"><small>&nbsp;</small></p>
+                <div class="clearfix"></div>
+              </div>
+            </article>
+          </div>
+        </div>
+		<div class="row">
+			<div class="title">
+				<h3>Statistik Tahun <b>{{ (date('Y')-1) }}</b></h3>
+			</div>
+          <div class="col-sm-6 col-md-3 col-lg-3">
+            <article class="post clearfix maxwidth600 mb-30" style="display: block;">
+              <div class="entry-header">
+                <div class="entry-meta meta-absolute text-center p-15">
+                <div class="display-table">
+                </div>
+                </div>
+              </div>
+              <div class="entry-content border-1px text-center">
+                <h4 class="text-theme-colored entry-title mt-10"><b>MUZAKI</b></h4>
+				<hr>
+				@php
+					$muzzaki=penyebut( isset($jlh_muzzaki[date('Y')-1]) ? $jlh_muzzaki[date('Y')-1] : 0 );
+				@endphp
+                <span style="font-size: 50px; font-weight: bold;" class="text-theme-colored">{{ $muzzaki['nilai'] }}</span><span style="font-size: 20px" class="text-theme-colored"> {{ $muzzaki['satuan'] }}</span>
+                <p class="mb-10 font-13"><small>&nbsp;</small></p>
+                <div class="clearfix"></div>
+              </div>
+            </article>
+          </div>
+          <div class="col-sm-6 col-md-3 col-lg-3">
+            <article class="post clearfix maxwidth600 mb-30" style="display: block;">
+              <div class="entry-header">
+                <div class="entry-meta meta-absolute text-center p-15">
+                <div class="display-table">
+                </div>
+                </div>
+              </div>
+              <div class="entry-content border-1px text-center">
+                <h4 class="text-center text-theme-colored entry-title mt-10"><b>PENGHIMPUNAN</b></h4>
+				<hr>
+				@php
+					$penghimpun=penyebut( isset($jlh_penghimpunan[date('Y')-1]) ? $jlh_penghimpunan[date('Y')-1] : 0 );
+				@endphp
+                <span style="font-size: 50px; font-weight: bold;" class="text-theme-colored">{{ $penghimpun['nilai'] }}</span><span style="font-size: 20px" class="text-theme-colored"> {{ $penghimpun['satuan'] }}</span>
+                <p class="text-center mb-10 font-13"><small>&nbsp;</small></p>
+                <div class="clearfix"></div>
+              </div>
+            </article>
+          </div>
+          <div class="col-sm-6 col-md-3 col-lg-3">
+            <article class="post clearfix maxwidth600 mb-30" style="display: block;">
+              <div class="entry-header">
+                <div class="entry-meta meta-absolute text-center p-15">
+                <div class="display-table">
+                </div>
+                </div>
+              </div>
+              <div class="entry-content border-1px text-center">
+                <h4 class="text-center text-theme-colored entry-title mt-10"><b>PENYALURAN</b></h4>
+				<hr>
+				@php
+					$penyaluran=penyebut( isset($jlh_penyaluran[date('Y')-1]) ? $jlh_penyaluran[date('Y')-1] : 0 );
+				@endphp
+                <span style="font-size: 50px; font-weight: bold;" class="text-theme-colored">{{ $penyaluran['nilai'] }}</span><span style="font-size: 20px" class="text-theme-colored"> {{ $penyaluran['satuan'] }}</span>
+                <p class="text-center mb-10 font-13"><small>&nbsp;</small></p>
+                <div class="clearfix"></div>
+              </div>
+            </article>
+          </div>
+          <div class="col-sm-6 col-md-3 col-lg-3">
+            <article class="post clearfix maxwidth600 mb-10">
+              <div class="entry-header">
+                <div class="entry-meta meta-absolute text-center p-15">
+                <div class="display-table">
+                </div>
+                </div>
+              </div>
+              <div class="entry-content border-1px text-center">
+                <h4 class="text-center text-theme-colored entry-title mt-10"><b>MUSTAHIK</b></h4>
+				<hr>
+				@php
+					$mustahik=penyebut( isset($jlh_mustahik[date('Y')-1]) ? $jlh_mustahik[date('Y')-1] : 0 );
+				@endphp
+                <span style="font-size: 50px; font-weight: bold;" class="text-theme-colored">{{ $mustahik['nilai'] }}</span><span style="font-size: 20px" class="text-theme-colored"> {{ $mustahik['satuan'] }}</span>
+                <p class="text-center mb-10 font-13"><small>&nbsp;</small></p>
+                <div class="clearfix"></div>
+              </div>
+            </article>
+          </div>
+        </div>
+    </div>
+</div>
         
 <style>
     .panel-success>.panel-heading
@@ -671,5 +768,35 @@
         font-family: Roboto !important;
         line-height: 23px;
         font-size:13px;
-    }
+	}
+	.mb-30 {
+		margin-bottom: 30px!important;
+	}
+	.post{
+		border:2px solid #1db3e7!important;
+		padding:10px 0px;
+		background-color: #fff!important;
+	}
+	.post .entry-header {
+		position: relative;
+		
+	}
+	.post .entry-meta.meta-absolute{
+		background-color: #1db3e7!important;
+	}
+	.display-table {
+		display: table;
+		height: 100%;
+		position: relative;
+		width: 100%;
+		z-index: 1;
+	}
+	.entry-content{
+		font-family: Roboto slab !important;
+		
+	}
+	
+	.entry-content hr{
+		border:1px solid  #1db3e7!important;
+	}
 </style>
