@@ -12,6 +12,8 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    
+
     public function getprogram()
     {
         $url='https://donasi.online/program/get/list-user-program';
@@ -46,5 +48,49 @@ class Controller extends BaseController
         {
             return  0;
         }
+    }
+
+    public function getkitabisa()
+    {
+        // https://core.kitabisa.com/campaigns/05eca69b651d5202966d791b3d9921e5/donated
+        $url='https://core.kitabisa.com/campaigns/05eca69b651d5202966d791b3d9921e5/donated';
+        try
+        {
+            // $data = [
+            //             'lembagaCode' => 'URQJNT',
+            //             'programGroupUrl' => '0',
+            //             'sorting' => '1',
+            //             'kondisi' => '0',
+            //             'start' => '0',
+            //             'length' => '9',
+            //             'orderBy' => '',
+            //             'orderByType' => '',
+            //             'keywordSearch' => '',
+            //             'keywordSearchType' => '',
+            //             'kategori' => '0',
+            //             'daerah' => '0'
+            //         ];
+            $header=[
+                'Accept' => '*/*',
+                'Content-Type' => 'application/x-www-form-urlencoded'
+                
+            ];
+            $client = new Client();
+            $result = $client->get($url, ['headers'=>$header]);
+            $isi=$result->getBody()->getContents();
+            $data = json_decode($isi);
+            return collect($data->data);
+        }
+        catch(\Exception $e)
+        {
+            return  0;
+        }
+    }
+    public function getkitabisa2()
+    {
+        // https://core.kitabisa.com/campaigns/05eca69b651d5202966d791b3d9921e5/donated
+        $url='https://core.kitabisa.com/campaigns/05eca69b651d5202966d791b3d9921e5/donated';
+        $d=file_get_contents($url);
+        return $d;
     }
 }

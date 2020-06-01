@@ -88,7 +88,7 @@
 			<div id="sync110" class="owl-carousel owl-theme">
                 @foreach ($getprogram as $item)
                     
-                    <div class="item" style="background: #fff;height: 400px;margin: 0px 10px;">
+                    <div class="item" style="background: #fff;height: 450px;margin: 0px 10px;">
                         <div class="z">
                             <div class="img">
                                 <div class="img-1 text-center">
@@ -101,7 +101,7 @@
                                 <div class="text_show" style="padding:0 10px;">
 									<h3 class="" style="min-height:50px;font-family: Roboto slab;"><a href="https://donasi.online/baznas-kota-bogor/program/{{ $item->urlDomain }}" target="_blank">{{ $item->judulProgram }}</a></h3>
 									<hr>
-									<div class="row">
+									<div class="row" style="min-height:150px !important">
 										<div class="col-md-6 text-center">
 											<label class="text-info">Dana Terkumpul</label>
 										</div>
@@ -123,6 +123,45 @@
                             </div>
                         </div>
                     </div>
+                @endforeach
+                @foreach ($getkitabisa as $item)
+                    @if ($item->days_remaining>0)		
+						<div class="item" style="background: #fff;height: 450px;margin: 0px 10px;">
+							<div class="z">
+								<div class="img">
+									<div class="img-1 text-center">
+										{{-- <img src="{{asset('images/logo/ZAKAT-BAZNAS.png')}}" alt="" style="width:50%;margin-top:40px;"> --}}
+										<img src="{{ $item->image }}" alt="" style="width:100%;height:200px">
+									</div>
+									
+								</div>
+								<div class="ct">
+									<div class="text_show" style="padding:0 10px;">
+										<h3 class="" style="min-height:50px;font-family: Roboto slab;"><a href="https://kitabisa.com/campaign/{{ $item->short_url }}" target="_blank">{{ $item->title }}</a></h3>
+										<hr>
+										<div class="row" style="min-height:150px !important">
+											<div class="col-md-6 text-center">
+												<label class="text-info">Dana Terkumpul</label>
+											</div>
+											<div class="col-md-6">
+												<div style="font-size:20px;font-weight:bold;font-family: Roboto slab;" class="text-success text-right">Rp {{ number_format($item->donation_received,0,'.',',') }}</div>    
+											</div>
+										</div>
+										
+									</div>
+									<div class="donate">
+										<div class="button_donate pull-right" style="bottom:10px;position: absolute;right:10px">
+											<a href="https://kitabisa.com/campaign/{{ $item->short_url }}" target="_blank">Donasi Sekarang</a>
+										</div>
+										
+									</div>
+									<div class="raised">
+										&nbsp;
+									</div>
+								</div>
+							</div>
+						</div>
+					@endif
                 @endforeach
 			</div>
 		</div>

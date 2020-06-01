@@ -11,6 +11,7 @@ class MainController extends Controller
     public function index()
     {
         $getprogam=$this->getprogram();
+        $getkitabisa=$this->getkitabisa();
 
         $statistik=Statistik::all();
         $jlh_muzzaki=$jlh_mustahik=$jlh_penghimpunan=$jlh_penyaluran=array();
@@ -28,6 +29,7 @@ class MainController extends Controller
             ->with('jlh_mustahik',$jlh_mustahik)
             ->with('jlh_penghimpunan',$jlh_penghimpunan)
             ->with('jlh_penyaluran',$jlh_penyaluran)
-            ->with('getprogram',$getprogam);
+            ->with('getprogram',$getprogam)
+            ->with('getkitabisa',$getkitabisa);
     }
 }

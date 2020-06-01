@@ -207,3 +207,4 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
  Route::get('v2','V2\MainController@index');
 
  Route::get('getprogram','Controller@getprogram');
+ Route::get('getkitabisa','Controller@getkitabisa');
