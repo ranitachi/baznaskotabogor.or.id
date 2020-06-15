@@ -12,6 +12,7 @@ class MainController extends Controller
     {
         $getprogam=$this->getprogram();
         $getkitabisa=$this->getkitabisa();
+        // return $getprogam;
 
         $statistik=Statistik::all();
         $jlh_muzzaki=$jlh_mustahik=$jlh_penghimpunan=$jlh_penyaluran=array();

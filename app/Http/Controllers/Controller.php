@@ -16,7 +16,7 @@ class Controller extends BaseController
 
     public function getprogram()
     {
-        $url='https://donasi.online/program/get/list-user-program';
+        $url='https://donasi.online/baznas-kota-bogor/program/get/list-user-program';
         try
         {
             $data = [
@@ -46,7 +46,7 @@ class Controller extends BaseController
         }
         catch(\Exception $e)
         {
-            return  0;
+            return  array();
         }
     }
 
@@ -83,7 +83,7 @@ class Controller extends BaseController
         }
         catch(\Exception $e)
         {
-            return  0;
+            return  array();
         }
     }
     public function getkitabisa2()
